@@ -1,3 +1,9 @@
+<?php
+include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Utils/Database.php';
+include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
+
+// $productDAO = new ProductDAO();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

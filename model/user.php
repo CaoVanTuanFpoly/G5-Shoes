@@ -43,6 +43,9 @@ class User {
     public function getPhone() {
         return $this->phone;
     }
+    public function setPhone($newPhone) {
+        $this->phone = $newPhone;
+    }
     public function getPassword() {
         return $this->password;
     }

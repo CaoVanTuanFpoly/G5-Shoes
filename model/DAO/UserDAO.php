@@ -39,6 +39,9 @@ class UserDAO {
             } else return false;
         }
     }
+    public function getAllUsers() {
+        
+    }
 }
 
 ?>
