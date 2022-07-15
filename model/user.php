@@ -1,30 +1,51 @@
 <?php
-// gọi lại file database 
-require_once 'database.php';
-class login extends DATABASE
-{
-    // gọi lại function construct
-    public function __construct()
+class User {
+    private $id;
+    private $role;
+    private $name;
+    private $dob;
+    private $address;
+    private $mail;
+    private $phone;
+    private $password;
+    private $avatar;
+    public function __construct($id, $role, $name, $dob, $address, $mail, $phone, $password, $avatar)
     {
-        parent::__construct();
-    }
-    // Hàm check user
-    public function getInfoEmail($mail)
-    {
-        $sql = "SELECT * FROM `khachhang` WHERE `mail` = '$mail'";
-        return $this->queryOne($sql);
-    }
-    public function checkForm($mail, $soDT)
-    {
-        $sql = "SELECT mail , soDT FROM khachhang WHERE mail = '$mail'  OR soDT = '$soDT' ";
-        return $this->queryOne($sql);
+        $this->id = $id;
+        $this->role = $role;
+        $this->name = $name;
+        $this->dob = $dob;
+        $this->address = $address;
+        $this->mail = $mail;
+        $this->phone = $phone;
+        $this->password = $password;
+        $this->avatar = $avatar;
     }
 
-    public function register($hoTen, $ngaySinh, $email, $soDT, $password, $diaChi)
-    {
-        $isAdmin = 2;
-        $sql = "INSERT INTO `khachhang` (hoTen,ngaySinh,mail,soDT,password,diaChi,isAdmin) VALUE ('$hoTen','$ngaySinh','$email','$soDT','$password','$diaChi','$isAdmin')";
-        return $this->execute($sql);
+    public function getID() {
+        return $this->id;
+    }
+    public function getRole() {
+        return $this->role;
+    }
+    public function getName() {
+        return $this->name;
+    }
+    public function getDOB() {
+        return $this->dob;
+    }
+    public function getAddress() {
+        return $this->address;
+    }
+    public function getMail() {
+        return $this->mail;
+    }
+    public function getPhone() {
+        return $this->phone;
+    }
+    public function getPassword() {
+        return $this->password;
     }
 }
+
 ?>

@@ -1,0 +1,133 @@
+.login_regin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.login {
+  width: 30%;
+  border-right: 1px solid lightgray;
+  padding: 50px;
+}
+.login input {
+  width: 400px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.login h2 {
+  font-weight: 400;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.login label {
+  font-weight: 500;
+}
+.login p {
+  width: 400px;
+  font-weight: 500;
+}
+.login b {
+  color: blue;
+  font-weight: 500;
+  height: 50px;
+  line-height: 30px;
+}
+.btn_login {
+  display: flex;
+  margin-top: 10px;
+}
+.btn_login input[type="submit"] {
+  width: 200px;
+  height: 35px;
+  margin-right: 40px;
+  margin-top: 0;
+  background: orchid;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn_login input[type="submit"]:hover {
+  background: gray;
+}
+
+.btn_login a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+.btn_login a:hover {
+  color: red;
+}
+
+.regin {
+  width: 30%;
+  padding: 50px;
+}
+.regin input {
+  width: 400px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.regin h2 {
+  font-weight: 400;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.regin label {
+  font-weight: 500;
+}
+.btn_regin {
+  display: flex;
+}
+.btn_regin input[type="submit"] {
+  width: 200px;
+  height: 35px;
+  margin-right: 40px;
+  margin-top: 0;
+  background: orange;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn_regin input[type="submit"]:hover {
+  background: gray;
+}
+
+.btn_regin input[type="reset"] {
+  width: 200px;
+  height: 35px;
+  margin-right: 40px;
+  margin-top: 0;
+  background: orchid;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn_regin input[type="reset"]:hover {
+  background: gray;
+}
+.regin input[type="file"] {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.title {
+  margin-left: 10%;
+  height: 80px;
+  line-height: 80px;
+}
+.title .home {
+  font-weight: 500;
+}
