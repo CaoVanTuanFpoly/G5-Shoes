@@ -49,57 +49,7 @@
                                         </a>
                                     </div>
                                 <?php } ?>
-                                <!-- product 2 -->
-                                <!-- <div class="col l-3">
-                                    <a href="#" class="main__product-box">
-                                        <div class="main__product-box-picture">
-                                            <div class="main__product-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                        </div>
-                                        <h3 class="main__product-box-title">Nike air</h3>
-                                        <div class="main__product-box-price">
-                                            <span class="main__product-box-current-price">180.000đ</span>
-                                            <span class="main__product-box-old-price">100.000đ</span>
-                                        </div>
-                                        <div class="main__product-box-color">
-                                            <a href="#" class="main__product-box-color-title">Xem chi tiết</a>
-                                            
-                                        </div>
-                                    </a>
-                                </div> -->
-                                <!-- product 3 -->
-                                <!-- <div class="col l-3">
-                                    <a href="#" class="main__product-box">
-                                        <div class="main__product-box-picture">
-                                            <div class="main__product-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                        </div>
-                                        <h3 class="main__product-box-title">Nike air</h3>
-                                        <div class="main__product-box-price">
-                                            <span class="main__product-box-current-price">180.000đ</span>
-                                            <span class="main__product-box-old-price">100.000đ</span>
-                                        </div>
-                                        <div class="main__product-box-color">
-                                            <a href="#" class="main__product-box-color-title">Xem chi tiết</a>
-                                            
-                                        </div>
-                                    </a>
-                                </div> -->
-                                <!-- product 4 -->
-                                <!-- <div class="col l-3">
-                                    <a href="#" class="main__product-box">
-                                        <div class="main__product-box-picture">
-                                            <div class="main__product-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                        </div>
-                                        <h3 class="main__product-box-title">Nike air</h3>
-                                        <div class="main__product-box-price">
-                                            <span class="main__product-box-current-price">180.000đ</span>
-                                            <span class="main__product-box-old-price">100.000đ</span>
-                                        </div>
-                                        <div class="main__product-box-color">
-                                            <a href="#" class="main__product-box-color-title">Xem chi tiết</a>
-                                            
-                                        </div>
-                                    </a>
-                                </div> -->
+                               
                             </div>
                         </div>
                     </div>
