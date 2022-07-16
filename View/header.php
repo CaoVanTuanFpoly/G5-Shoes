@@ -1,6 +1,7 @@
 <?php
-include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Utils/Database.php';
-include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
+include '../Utils/Database.php';
+// include '/Windows/Xampp/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
+include '../model/DAO/userDAO.php';
 
 // $productDAO = new ProductDAO();
 ?>
@@ -21,8 +22,9 @@ include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./scss/grid.css">
-    <link rel="stylesheet" href="css/trangchu.css" />
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/header.css"/>
+    <link rel="stylesheet" href="./css/sidebar.css"/>    
 </head>
 
 <body>
@@ -44,7 +46,7 @@ include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
                         </div>
                     </div>
                     <!-- header logo -->
-                    <a href="#" class="header__logo">
+                    <a href="./index.php" class="header__logo">
                         <img src="./images/logo-chinh.jpg" alt="" class="header__logo-img">
                     </a>
                     <!-- header actions information-->
@@ -56,10 +58,46 @@ include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
                                 </a>
                             </li>
                             <li class="header__information-item">
-                                <a href="#" class="header__information-link ting">
+                                <div class="header__information-link ting">
                                     <i class="fa-regular fa-bell"></i>
                                     <span class="header__information-count-information">2</span>
-                                </a>
+                                    <div class="header__notification">
+                                        <h3 class="header__notification-title">Thông báo</h3>
+                                        <ul class="header__notification-list">
+                                            <li class="header__notification-item">
+                                                <a href="#" class="header__notification-link">
+                                                    <div class="header__notification-avatar">
+                                                        <img src="./images/giay-mau-show.png" alt="" class="header__notification-img">
+                                                    </div>
+                                                    <div class="header__notification-info">
+                                                        <h3 class="header__notification-info-title">Bạn đã đặt thành công đơn hàng <span>Giày nike</span>, đơn hàng đang được giao</h3>
+                                                        <p class="header__notification-info-desc">1 phút trước</p>
+                                                    </div>
+                                                    <div class="header__notification-remove">
+                                                        <i class="fa-regular fa-trash-can"></i>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="header__notification-item">
+                                                <a href="#" class="header__notification-link">
+                                                    <div class="header__notification-avatar-user">
+                                                        <img src="./images/huy.jpg" alt="" class="header__notification-user-img">
+                                                    </div>
+                                                    <div class="header__notification-info">
+                                                        <h3 class="header__notification-info-title-user">
+                                                            <span class="header__notification-comment-user">Huy Quang Nguyen</span> 
+                                                            đã nhắc đến bạn trong một bình luận
+                                                        </h3>
+                                                        <p class="header__notification-info-desc">1 phút trước</p>
+                                                    </div>
+                                                    <div class="header__notification-remove">
+                                                        <i class="fa-regular fa-trash-can"></i>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
                             <li class="header__information-item">
                                 <a href="#" class="header__information-link">
@@ -67,7 +105,7 @@ include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
                                 </a>
                             </li>
                             <li class="header__information-item">
-                                <a href="#" class="header__information-link cart">
+                                <div class="header__information-link cart">
                                     <svg viewBox="0 0 26.6 25.6" class="header__information-link-cart">
                                         <polyline fill="none" points="2 1.7 5.5 1.7 9.6 18.3 21.2 18.3 24.6 6.1 7 6.1"
                                             stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
@@ -76,7 +114,78 @@ include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
                                         <circle cx="19.7" cy="23" r="2.2" stroke="none"></circle>
                                     </svg>
                                     <span class="header__information-count-cart">2</span>
-                                </a>
+                                    <div class="header__cart">
+                                        <h3 class="header__cart-title">Giỏ hàng</h3>
+                                        <ul class="header__cart-list">
+                                            <li class="header__cart-item">
+                                                <a href="#" class="header__cart-link">
+                                                    <div class="header__cart-info">
+                                                        <div class="header__cart-info-avatar">
+                                                            <img src="./images/giay-mau-show.png" alt="" class="header__cart-info-img">
+                                                        </div>
+                                                        <div class="header__cart-info-text">
+                                                            <h3 class="header__cart-info-name">Giày nike mới nhất tại shop</h3>
+                                                            <p class="header__cart-info-desc">Size: 40</p>
+                                                            <p class="header__cart-info-desc">Số lượng: 1</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- price -->
+                                                    <div class="header__cart-component">
+                                                        <span class="header__cart-total-component">200.000đ</span>
+                                                        <button class="header__cart-remove-component">
+                                                            <i class="fa-regular fa-trash-can"></i>
+                                                        </button>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="header__cart-item">
+                                                <a href="#" class="header__cart-link">
+                                                    <div class="header__cart-info">
+                                                        <div class="header__cart-info-avatar">
+                                                            <img src="./images/giay-mau-show.png" alt="" class="header__cart-info-img">
+                                                        </div>
+                                                        <div class="header__cart-info-text">
+                                                            <h3 class="header__cart-info-name">Giày nike mới nhất tại shop</h3>
+                                                            <p class="header__cart-info-desc">Size: 40</p>
+                                                            <p class="header__cart-info-desc">Số lượng: 1</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- price -->
+                                                    <div class="header__cart-component">
+                                                        <span class="header__cart-total-component">200.000đ</span>
+                                                        <button class="header__cart-remove-component">
+                                                            <i class="fa-regular fa-trash-can"></i>
+                                                        </button>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="header__cart-item">
+                                                <a href="#" class="header__cart-link">
+                                                    <div class="header__cart-info">
+                                                        <div class="header__cart-info-avatar">
+                                                            <img src="./images/giay-mau-show.png" alt="" class="header__cart-info-img">
+                                                        </div>
+                                                        <div class="header__cart-info-text">
+                                                            <h3 class="header__cart-info-name">Giày nike mới nhất tại shop</h3>
+                                                            <p class="header__cart-info-desc">Size: 40</p>
+                                                            <p class="header__cart-info-desc">Số lượng: 1</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- price -->
+                                                    <div class="header__cart-component">
+                                                        <span class="header__cart-total-component">200.000đ</span>
+                                                        <button class="header__cart-remove-component">
+                                                            <i class="fa-regular fa-trash-can"></i>
+                                                        </button>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="header__cart-link-box">
+                                            <a href="#" class="header__cart-link-navigation">Xem giỏ hàng</a>
+                                        </div>
+                                    </div> 
+                                </div>
                             </li>
                         </ul>
                     </div>

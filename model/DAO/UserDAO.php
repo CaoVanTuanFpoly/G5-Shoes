@@ -1,5 +1,5 @@
 <?php 
-include '/Applications/XAMPP/xamppfiles/htdocs/G5-Shoes/Model/User.php';
+include 'C:\Xampp\htdocs\G5-Shoes\model\user.php';
 class UserDAO {
     private $database;
     public function __construct() {

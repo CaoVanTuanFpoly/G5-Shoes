@@ -3,6 +3,7 @@
 ?>
 
         <main class="main__wrapper">
+        <link rel="stylesheet" href="./css/index.css"/>
             <div class="grid wide">
                 <!-- banner -->
                 <div class="banner">
