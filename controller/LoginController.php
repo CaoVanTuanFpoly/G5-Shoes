@@ -13,6 +13,6 @@ if(isset($_POST['login'])) {
         $_SESSION['user'] = $user->getID();
         
         echo 'success';
-    } else echo 'loi me may r';
+    } else echo 'co loi!';
 }
 ?>

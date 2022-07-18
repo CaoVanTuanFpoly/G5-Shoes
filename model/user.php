@@ -1,53 +1,68 @@
 <?php
+
 class User {
     private $id;
-    private $role;
-    private $name;
-    private $dob;
+    private $email;
+    private $fullName;
+    private $gender;
+    private $birthday;
     private $address;
-    private $mail;
-    private $phone;
+    private $phoneNumber;
     private $password;
     private $avatar;
-    public function __construct($id, $role, $name, $dob, $address, $mail, $phone, $password, $avatar)
+    private $levelId;
+    public function __construct($id, $email, $fullName, $gender, $birthday, $address, $phoneNumber, $password, $avatar, $levelId)
     {
         $this->id = $id;
-        $this->role = $role;
-        $this->name = $name;
-        $this->dob = $dob;
+        $this->email = $email;
+        $this->fullName = $fullName;
+        $this->gender = $gender;
+        $this->birthday = $birthday;
         $this->address = $address;
-        $this->mail = $mail;
-        $this->phone = $phone;
+        $this->phoneNumber = $phoneNumber;
         $this->password = $password;
         $this->avatar = $avatar;
+        $this->levelID = $levelID;
     }
 
     public function getID() {
         return $this->id;
     }
-    public function getRole() {
-        return $this->role;
+
+    public function getEmail() {
+        return $this->email;
     }
-    public function getName() {
-        return $this->name;
+
+    public function getFullName() {
+        return $this->fullName;
     }
-    public function getDOB() {
-        return $this->dob;
+
+    public function getGender() {
+        return $this->gender;
     }
+
+    public function getBirthday() {
+        return $this->birthday;
+    }
+
     public function getAddress() {
         return $this->address;
     }
-    public function getMail() {
-        return $this->mail;
+
+    public function getPhoneNumber() {
+        return $this->phoneNumber;
     }
-    public function getPhone() {
-        return $this->phone;
-    }
-    public function setPhone($newPhone) {
-        $this->phone = $newPhone;
-    }
+
     public function getPassword() {
         return $this->password;
+    }
+
+    public function getAvatar() {
+        return $this->avatar;
+    }
+    
+    public function getLevelId() {
+        return $this->levelId;
     }
 }
 

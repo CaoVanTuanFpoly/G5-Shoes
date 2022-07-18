@@ -6,7 +6,7 @@ class Database {
     }
     public function getDatabase($database = null) {
         if($database == null) {
-            return new mysqli('localhost', 'root', '', 'duan1');
+            return new mysqli('localhost', 'root', '', 'g5shoes');
         } else return $database;
     }
 }

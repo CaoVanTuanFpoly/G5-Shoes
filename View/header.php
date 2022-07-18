@@ -1,9 +1,10 @@
 <?php
-include '../Utils/Database.php';
-// include '/Windows/Xampp/htdocs/G5-Shoes/Model/DAO/UserDAO.php';
-include '../model/DAO/userDAO.php';
+include('../Utils/Database.php');
+include('../model/DAO/userDAO.php');
+include('C:\Xampp\htdocs\G5-Shoes\model\DAO\productDAO.php');
 
-// $productDAO = new ProductDAO();
+$productDAO = new ProductDAO();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

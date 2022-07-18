@@ -1,5 +1,5 @@
 <?php 
-include 'C:\Xampp\htdocs\G5-Shoes\model\user.php';
+include 'C:\Xampp\htdocs\G5-Shoes\model\User.php';
 class UserDAO {
     private $database;
     public function __construct() {
@@ -11,14 +11,14 @@ class UserDAO {
         if($this->database->connect_error) {
             return false;
         } else {
-            $query = $this->database->prepare('SELECT * FROM `khachhang` WHERE `khachhang`.`maKH` = ?');
+            $query = $this->database->prepare('SELECT * FROM `user` WHERE `user`.`userID` = ?');
             $query->bind_param('s', $id);
 
             if($query->execute()) {
                 $result = $query->get_result();
                 if($result->num_rows > 0) {
                     $user = $result->fetch_assoc();
-                    return new User($user['maKH'], $user['isAdmin'], $user['hoTen'], $user['ngaySinh'], $user['diaChi'], $user['mail'], $user['soDT'], $user['password'], $user['avata']);
+                    return new User($user['userID'], $user['email'], $user['fullName'], $user['gender'], $user['birthday'], $user['address'], $user['phoneNumber'], $user['password'], $user['avata'], $user['levelID']);
                 } else return false;
             } else return false;
         }
@@ -27,14 +27,14 @@ class UserDAO {
         if($this->database->connect_error) {
             return false;
         } else {
-            $query = $this->database->prepare('SELECT * FROM `khachhang` WHERE `khachhang`.`mail` = ?');
+            $query = $this->database->prepare('SELECT * FROM `user` WHERE `user`.`userID` = ?');
             $query->bind_param('s', $mail);
 
             if($query->execute()) {
                 $result = $query->get_result();
                 if($result->num_rows > 0) {
                     $user = $result->fetch_assoc();
-                    return new User($user['maKH'], $user['isAdmin'], $user['hoTen'], $user['ngaySinh'], $user['diaChi'], $user['mail'], $user['soDT'], $user['password'], $user['avata']);
+                    return new User($user['userID'], $user['email'], $user['fullName'], $user['gender'], $user['birthday'], $user['address'], $user['phoneNumber'], $user['password'], $user['avata'], $user['levelID']);
                 } else return false;
             } else return false;
         }
