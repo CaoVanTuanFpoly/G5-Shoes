@@ -30,7 +30,7 @@
                             <div class="row">
                                 <!-- product 1 -->
                                 <?php 
-                                    $products = $productDAO->getAllProduct();
+                                    $products = $productDAO->getFourNewProducts();
                                     foreach ($products as $product) {
                                         
                                 ?>

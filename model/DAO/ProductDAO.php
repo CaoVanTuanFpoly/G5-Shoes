@@ -56,5 +56,34 @@
             }
         }
 
+        // lấy 4 product mới nhất
+
+        public function getFourNewProducts() {
+            if ($this->database->connect_error) {
+                return false;
+            } 
+            else {
+                $query = $this->database->prepare("SELECT * FROM `product` ORDER BY `productID` DESC LIMIT 4");
+
+                if ($query->execute()) {
+                    $result = $query->get_result();
+
+                    if ($result->num_rows > 0) {
+                        $fourProducts = [];
+                        while ($row = $result->fetch_assoc()) {
+                            $fourProduct = new Product($row['productID'], $row['name'], $row['categoryID'], $row['img1'], $row['img2'], $row['img3'], $row['img4'], $row['charge'],  $row['description']);
+                            $fourProducts[] = $fourProduct;
+                        }
+                        return $fourProducts;
+                    } else {
+                        return false;
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+        } 
+
     }
 ?>
