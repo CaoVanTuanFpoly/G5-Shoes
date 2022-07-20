@@ -30,22 +30,22 @@
                             <div class="row">
                                 <!-- product 1 -->
                                 <?php 
-                                    $products = $productDAO->getFourNewProducts();
-                                    foreach ($products as $product) {
+                                    $productNews = $productDAO->getProductByArgument(4);
+                                    foreach ($productNews as $productNew) {
                                         
                                 ?>
                                     <div class="col l-3">
-                                        <a href="<?php echo './detail.php?id='.$product->getId() ?>" class="main__product-box">
+                                        <a href="<?php echo './detail.php?id='.$productNew->getId() ?>" class="main__product-box">
                                             <div class="main__product-box-picture">
-                                                <div class="main__product-box-img" style="background-image: url(<?php echo $product->getAvatar1(); ?>)"></div>
+                                                <div class="main__product-box-img" style="background-image: url(<?php echo $productNew->getAvatar1(); ?>)"></div>
                                             </div>
-                                            <h3 class="main__product-box-title"><?php echo $product->getName(); ?></h3>
+                                            <h3 class="main__product-box-title"><?php echo $productNew->getName(); ?></h3>
                                             <div class="main__product-box-price">
-                                                <span class="main__product-box-current-price"><?php echo $product->getPrice(); ?></span>
+                                                <span class="main__product-box-current-price"><?php echo $productNew->getOldPrice(); ?></span>
                                                 <span class="main__product-box-old-price"><?php echo null ?></span>
                                             </div>
                                             <div class="main__product-box-color">
-                                                <a href="<?php echo './detail.php?id='.$product->getId() ?>" class="main__product-box-color-title">Xem chi tiết</a>
+                                                <a href="<?php echo './detail.php?id='.$productNew->getId() ?>" class="main__product-box-color-title">Xem chi tiết</a>
                                             </div>
                                         </a>
                                     </div>

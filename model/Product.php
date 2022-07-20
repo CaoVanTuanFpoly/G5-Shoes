@@ -1,25 +1,27 @@
 <?php
-// tối nay code product: show sản phẩm: chuyển vào trang chi tiết
+
 class Product {
     private $id;
     private $name;
     private $categoryId;
+    private $sizeID;
     private $avatar1;
     private $avatar2;
     private $avatar3;
     private $avatar4;
-    private $price;
+    private $oldPrice;
     private $description;
-    public function __construct($id, $name, $categoryId, $avatar1, $avatar2, $avatar3, $avatar4, $price, $description)
+    public function __construct($id, $name, $categoryId, $sizeID, $avatar1, $avatar2, $avatar3, $avatar4, $oldPrice, $description)
     {
         $this->id = $id;
         $this->name = $name;
         $this->categoryId = $categoryId;
+        $this->sizeID = $sizeID;
         $this->avatar1 = $avatar1;
         $this->avatar2 = $avatar2;
         $this->avatar3 = $avatar3;
         $this->avatar4 = $avatar4;
-        $this->price = $price;
+        $this->oldPrice = $oldPrice;
         $this->description = $description;
     }
 
@@ -34,25 +36,29 @@ class Product {
     public function getCategoryID() {
         return $this->categoryId;
     }
+
+    public function getSizeID() {
+        return $this->sizeID;
+    }
     
     public function getAvatar1() {
-        return $this->avatar1;
+        return './images/'.$this->avatar1;
     }
 
     public function getAvatar2() {
-        return $this->avatar2;
+        return './images/'.$this->avatar2;
     }
 
     public function getAvatar3() {
-        return $this->avatar3;
+        return './images/'.$this->avatar3;
     }
 
     public function getAvatar4() {
-        return $this->avatar4;
+        return './images/'.$this->avatar4;
     }
 
-    public function getPrice() {
-        return $this->price;
+    public function getOldPrice() {
+        return $this->oldPrice;
     }
 
     public function getDescription() {

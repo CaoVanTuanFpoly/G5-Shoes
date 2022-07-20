@@ -1,9 +1,11 @@
 <?php
-include('../Utils/Database.php');
-include('../model/DAO/userDAO.php');
-include('C:\Xampp\htdocs\G5-Shoes\model\DAO\productDAO.php');
+include('C:\Xampp\htdocs\G5-Shoes\Utils\Database.php');
+include('C:\Xampp\htdocs\G5-Shoes\Model\DAO\userDAO.php');
+include('C:\Xampp\htdocs\G5-Shoes\Model\DAO\productDAO.php');
+include('C:\Xampp\htdocs\G5-Shoes\Model\DAO\SizeDAO.php');
 
 $productDAO = new ProductDAO();
+$sizeDAO = new SizeDAO();
 
 ?>
 <!DOCTYPE html>

@@ -1,6 +1,6 @@
 <?php
 include 'C:\Xampp\htdocs\G5-Shoes\Utils\Database.php';
-include 'C:\Xampp\htdocs\G5-Shoes\model\DAO\userDAO.php';
+include 'C:\Xampp\htdocs\G5-Shoes\Model\DAO\userDAO.php';
 
 
 $userDAO = new UserDAO();

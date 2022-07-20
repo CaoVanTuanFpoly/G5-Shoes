@@ -1,17 +1,42 @@
 <?php
     include('./header.php');
     
+    $id = isset($_GET['id']) ? $_GET['id'] : false;
+    $productID;
+    $detailProduct = $productDAO->getNewestProduct();
+
+    if ((int)$id) {
+
+        if ((int)$id > (int)$detailProduct->getID()) {
+            $productID = $detailProduct->getID();
+        }
+        else {
+            $productID = $id;
+        }
+     
+    } 
+    else {
+        $productID = $detailProduct->getID();
+    }
+    
+
 ?>
 <link rel="stylesheet" href="./css/detailProduct.css"/>
 <div class="main">
     <div class="grid wide">
         <h3 class="main-part">Trang chủ > Chi tiết sản phẩm</h3>
         <div class="main__content">
+            <?php 
+                $detailProduct = $productDAO->getProductById($productID);
+                $productAll = $productDAO->getAllProduct();
+                
+                
+            ?>
             <div class="row">
                 <div class="col l-6 m-6 c-12">
                     <div class="main__show">
                         <div class="main__show-img"
-                            style="background-image: url(./images/giay-nike-free-run-5-0-1412910744.png)"></div>
+                            style="background-image: url(<?php echo $detailProduct->getAvatar1() ?>)"></div>
                         <div class="main__show-control">
                             <div class="main__show-control-slider"></div>
                         </div>
@@ -20,29 +45,28 @@
                 <div class="col l-6 m-6 c-12">
                     <div class="main__information">
                         <!-- product title -->
-                        <h1 class="main__information-title">FLASH SALE - Giày Nike thể thao, màu xanh nguyên bản</h1>
+                        <h1 class="main__information-title"><?php echo $detailProduct->getName(); ?></h1>
                         <!-- product price -->
                         <div class="main__information-price">
-                            <span class="main__information-old-price">280.000đ</span>
-                            <span class="main__information-current-price">200.000đ</span>
+                            <span class="main__information-old-price">111</span>
+                            <span class="main__information-current-price"><?php echo $detailProduct->getOldPrice(); ?></span>
                             <span class="main__information-sale">sale: 28%</span>
                         </div>
                         <!-- product size -->
                         <div class="main__information-size">
                             <h3 class="main__information-size-title">Kích thước giày: </h3>
                             <div class="main__information-size-wrapper">
-                                <div class="main__information-size-box active">
+                                <!-- <div class="main__information-size-box active">
                                     <span class="main__information-size-number">36</span>
-                                </div>
-                                <div class="main__information-size-box">
-                                    <span class="main__information-size-number">37</span>
-                                </div>
-                                <div class="main__information-size-box">
-                                    <span class="main__information-size-number">38</span>
-                                </div>
-                                <div class="main__information-size-box">
-                                    <span class="main__information-size-number">39</span>
-                                </div>
+                                </div> -->
+                                <?php
+                                    $sizes = $sizeDAO->getAllSize();
+                                    foreach ($sizes as $size) {
+                                ?>
+                                    <div class="main__information-size-box">
+                                        <span class="main__information-size-number"><?php echo $size->getSize() ?></span>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                         <!-- product amount -->
@@ -71,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            <?php ?>
         </div>
         <div class="main__detail">
             <h2 class="main__detail-title">Chi tiết sản phẩm</h2>
