@@ -35,23 +35,33 @@
 .main__show-control {
   margin-top: 30px;
   width: 100%;
-  height: 10px;
-  border-radius: 20px;
-  background-color: #ccc;
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.main__show-control-slider {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: var(--sub-color);
-  border-radius: 50%;
+.main__show-control-box {
+  width: 90px;
+  height: 90px;
+  border-radius: 4px;
+  border: 2px solid #d7d5d5;
+  margin-left: 12px;
   cursor: pointer;
 }
+
+.main__show-control-box.active {
+  border: 2px solid var(--sub-color);
+}
+
+.main__show-control-box:first-child {
+  margin-left: 0;
+}
+
+.main__show-control-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .main__information-title {
   margin: 0;
@@ -226,11 +236,13 @@
 .main__information-order-add-cart {
   padding: 18px 20px;
   background-color: var(--text-color);
+  font-family: "Poppins", sans-serif;
   border-radius: 10px;
   border: none;
   outline: none;
   color: #fff;
   font-weight: 600;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -238,12 +250,14 @@
 
 .main__information-buy-now {
   padding: 18px 20px;
+  font-family: "Poppins", sans-serif;
   background-color: var(--sub-color);
   border-radius: 10px;
   border: none;
   outline: none;
   color: #fff;
   font-weight: 600;
+  font-size: 1.6rem;
   cursor: pointer;
   margin-left: 20px;
 }

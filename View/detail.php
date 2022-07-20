@@ -21,7 +21,7 @@
     
 
 ?>
-<link rel="stylesheet" href="./css/detailProduct.css"/>
+    <link rel="stylesheet" href="./css/detailProduct.css"/>
 <div class="main">
     <div class="grid wide">
         <h3 class="main-part">Trang chủ > Chi tiết sản phẩm</h3>
@@ -38,7 +38,18 @@
                         <div class="main__show-img"
                             style="background-image: url(<?php echo $detailProduct->getAvatar1() ?>)"></div>
                         <div class="main__show-control">
-                            <div class="main__show-control-slider"></div>
+                            <div class="main__show-control-box active">
+                                <img src="<?php echo $detailProduct->getAvatar1() ?>" alt="" class="main__show-control-img">
+                            </div>
+                            <div class="main__show-control-box">
+                                <img src="<?php echo $detailProduct->getAvatar2() ?>" alt="" class="main__show-control-img">
+                            </div>
+                            <div class="main__show-control-box">
+                                <img src="<?php echo $detailProduct->getAvatar3() ?>" alt="" class="main__show-control-img">
+                            </div>
+                            <div class="main__show-control-box">
+                                <img src="<?php echo $detailProduct->getAvatar4() ?>" alt="" class="main__show-control-img">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -186,7 +197,7 @@
         </div>
     </div>
 </div>
-
+<script src="./js/detail.js"></script>
 <?php
     include('./footer.php');
 ?>
