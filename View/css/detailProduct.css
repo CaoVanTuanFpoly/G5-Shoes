@@ -140,6 +140,15 @@
 
 .main__information-size {
   margin-top: 30px;
+  padding-bottom: 10px;
+}
+
+.main__information-size.error {
+  border-bottom: 2px solid red;
+}
+
+.main__information-size.error .main__information-size-error {
+  display: flex;
 }
 
 .main__information-size-title {
@@ -173,8 +182,26 @@
   background-color: #f5f5f5;
 }
 
+.main__information-size-error {
+  display: none;
+  align-items: center;
+  color: red;
+  margin-top: 14px;
+}
+
+.main__information-size-error i {
+  font-size: 2rem;
+}
+
+.main__information-size-error-text {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
 .main__information-amount {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .main__information-amount-title {
@@ -195,6 +222,7 @@
 
 .main__information-amount-quantity-input {
   border: none;
+  width: 40px;
   flex: 1;
   outline: none;
   -webkit-user-select: none;
@@ -213,14 +241,16 @@
 
 .main__information-amount-quantity-decrease {
   width: 35px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 
-.main__information-amount-quantity-decrease {
+.main__information-amount-quantity-increase {
   width: 35px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -32,6 +32,7 @@
                 
                 
             ?>
+            <h3 id="id-product" hidden><?php echo $detailProduct->getId(); ?></h3>
             <div class="row">
                 <div class="col l-6 m-6 c-12">
                     <div class="main__show">
@@ -39,7 +40,7 @@
                             style="background-image: url(<?php echo $detailProduct->getAvatar1() ?>)"></div>
                         <div class="main__show-control">
                             <div class="main__show-control-box active">
-                                <img src="<?php echo $detailProduct->getAvatar1() ?>" alt="" class="main__show-control-img">
+                                <img id="img-root" src="<?php echo $detailProduct->getAvatar1() ?>" alt="" class="main__show-control-img">
                             </div>
                             <div class="main__show-control-box">
                                 <img src="<?php echo $detailProduct->getAvatar2() ?>" alt="" class="main__show-control-img">
@@ -55,54 +56,58 @@
                 </div>
                 <div class="col l-6 m-6 c-12">
                     <div class="main__information">
-                        <!-- product title -->
-                        <h1 class="main__information-title"><?php echo $detailProduct->getName(); ?></h1>
-                        <!-- product price -->
-                        <div class="main__information-price">
-                            <span class="main__information-old-price">111</span>
-                            <span class="main__information-current-price"><?php echo $detailProduct->getOldPrice(); ?></span>
-                            <span class="main__information-sale">sale: 28%</span>
-                        </div>
-                        <!-- product size -->
-                        <div class="main__information-size">
-                            <h3 class="main__information-size-title">Kích thước giày: </h3>
-                            <div class="main__information-size-wrapper">
-                                <!-- <div class="main__information-size-box active">
-                                    <span class="main__information-size-number">36</span>
-                                </div> -->
-                                <?php
-                                    $sizes = $sizeDAO->getAllSize();
-                                    foreach ($sizes as $size) {
-                                ?>
-                                    <div class="main__information-size-box">
-                                        <span class="main__information-size-number"><?php echo $size->getSize() ?></span>
-                                    </div>
-                                <?php } ?>
+                        <form id="form-action-detail" method="post">
+                            <!-- product title -->
+                            <h1 class="main__information-title"><?php echo $detailProduct->getName(); ?></h1>
+                            <!-- product price -->
+                            <div class="main__information-price">
+                                <span class="main__information-old-price">111</span>
+                                <span class="main__information-current-price"><?php echo $detailProduct->getOldPrice(); ?></span>
+                                <span class="price__store" hidden><?php echo $detailProduct->getOldPrice(); ?></span>
+                                <span class="main__information-sale">sale: 28%</span>
                             </div>
-                        </div>
-                        <!-- product amount -->
-                        <div class="main__information-amount">
-                            <h3 class="main__information-amount-title">Số lượng: </h3>
-                            <div class="main__information-amount-quantity">
-                                <label for="" class="main__information-amount-quantity-decrease">
-                                    <i class="fa-solid fa-minus"></i>
-                                </label>
-                                <input type="number" value="1" min="1" max="99"
-                                    class="main__information-amount-quantity-input">
-                                <label for="" class="main__information-amount-quantity-decrease">
-                                    <i class="fa-solid fa-plus"></i>
-                                </label>
+                            <!-- product size -->
+                            <div class="main__information-size">
+                                <h3 class="main__information-size-title">Kích thước giày: </h3>
+                                <div class="main__information-size-wrapper">
+                                    <?php
+                                        $sizes = $sizeDAO->getAllSize();
+                                        foreach ($sizes as $size) {
+                                    ?>
+                                        <div class="main__information-size-box">
+                                            <span class="main__information-size-number"><?php echo $size->getSize() ?></span>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="main__information-size-error">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    <span class="main__information-size-error-text"></span>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- product order -->
-                        <div class="main__information-order">
-                            <button class="main__information-order-add-cart">
-                                <i class="fa-solid fa-cart-plus main__information-order-add-cart-icon"></i>
-                                <span>Thêm vào giỏ hàng</span>
-                            </button>
-                            <button class="main__information-buy-now">Mua ngay</button>
-                        </div>
+                            <!-- product amount -->
+                            <div class="main__information-amount">
+                                <h3 class="main__information-amount-title">Số lượng: </h3>
+                                <div class="main__information-amount-quantity">
+                                    <label for="" class="main__information-amount-quantity-decrease">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </label>
+                                    <input type="text" value="1" min="1" max="99" name="input-amount"
+                                        class="main__information-amount-quantity-input">
+                                    <label for="" class="main__information-amount-quantity-increase">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </label>
+                                </div>
+                            </div>
+    
+                            <!-- product order -->
+                            <div class="main__information-order">
+                                <button id="add-cart" type="submit" class="main__information-order-add-cart">
+                                    <i class="fa-solid fa-cart-plus main__information-order-add-cart-icon"></i>
+                                    <span>Thêm vào giỏ hàng</span>
+                                </button>
+                                <button id="buy-now" type="submit" class="main__information-buy-now">Mua ngay</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

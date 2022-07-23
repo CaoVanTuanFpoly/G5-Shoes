@@ -150,6 +150,8 @@
   display: inline-block;
   min-width: 100px;
   height: 100px;
+  background-color: rgba(94, 201, 221, 0.4);
+  border-radius: 6px;
 }
 
 .main__wrapper-product-info-img {
@@ -423,4 +425,114 @@
   background-color: var(--sub-color);
   border-radius: 4px;
   text-decoration: none;
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+  display: none;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal__message {
+  width: 400px;
+  position: absolute;
+  top: 20%;
+  right: 10px;
+  transform: translateY(-20%);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  z-index: 1000000;
+  animation: modalMessage ease 0.2s;
+}
+
+@keyframes modalMessage {
+  from {
+    transform: translate(300px, -20%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, -20%);
+    opacity: 1;
+  }
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#5ec9dd;
+  padding: 14px 0;
+  color: #fff;
+  font-size: 2.6rem;
+}
+
+.modal__header-title {
+  margin-left: 6px;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+}
+
+.modal__content {
+  padding: 20px;
+}
+
+.modal__content-text {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.modal__actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.modal__actions-agree {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 6px 16px;
+  background-color: #5ec9dd;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal__actions-cancel {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 6px 16px;
+  background-color: #e2747e;
+  border-radius: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal__icon {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.modal__actions-agree-title {
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 600;
+  margin-left: 6px;
 }

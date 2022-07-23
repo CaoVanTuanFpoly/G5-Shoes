@@ -26,113 +26,9 @@
                 <div class="main__wrapper-title price">Thành tiền</div>
 
             </div>
-            <!-- cart product 1 -->
-            <div class="main__wrapper-product">
-                <div class="main__wrapper-product-main">
-                    <!-- active là class khi checkbox được check -->
-                    <label for="#checkbox-item" class="main__wrapper-product-label">
-                        <input id="checkbox-item" type="checkbox" class="main__wrapper-product-input">
-                        <div class="main__wrapper-product-wrapper-checkbox">
-                            <i class="fa-solid fa-check main__wrapper-product-checkbox-icon"></i>
-                        </div>
-                    </label>
-                    <div class="main__wrapper-product-info">
-                        <a class="main__wrapper-product-info-avatar">
-                            <img src="./images/giay-nike.png" alt="" class="main__wrapper-product-info-img">
-                        </a>
-                        <div class="main__wrapper-product-info-text">
-                            <h3 class="main__wrapper-product-info-name">Giày nike mới nhất test giàym giày nike xấu
-                                nhất, giày nike tệ nhất</h3>
-                            <div class="main__wrapper-product-info-desc">
-                                <span class="main__wrapper-product-info-sale">30% giảm</span>
-                                <span class="main__wrapper-product-info-freeship">Free ship</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product size -->
-                    <div class="main__wrapper-product-size">38</div>
-                    <!-- product quantity -->
-                    <div class="main__wrapper-product-quantity">
-                        <div class="main__wrapper-product-quantity-box">
-                            <button class="main__wrapper-product-quantity-discount">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <input type="text" value="1" min="1" max="99" class="main__wrapper-product-quantity-input">
-                            <button class="main__wrapper-product-quantity-increase">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- product price -->
-                    <div class="main__wrapper-product-quantity-price">
-                        <span class="main__wrapper-product-quantity-price-old">280.000đ</span>
-                        <span class="main__wrapper-product-quantity-price-current">200.000đ</span>
-                    </div>
-                </div>
-                <div class="main__wrapper-product-manipulation">
-                    <div class="main__wrapper-product-favourite">
-                        <i class="fa-regular fa-heart"></i>
-                        <span class="main__wrapper-product-text">Yêu thích</span>
-                    </div>
-                    <div class="main__wrapper-product-remove">
-                        <i class="fa-regular fa-trash-can"></i>
-                        <span class="main__wrapper-product-text">Xoá</span>
-                    </div>
-                </div>
-            </div>
-            <!-- cart product 2 -->
-            <div class="main__wrapper-product">
-                <div class="main__wrapper-product-main">
-                    <!-- active là class khi checkbox được check -->
-                    <label for="#checkbox-item" class="main__wrapper-product-label">
-                        <input id="checkbox-item" type="checkbox" class="main__wrapper-product-input">
-                        <div class="main__wrapper-product-wrapper-checkbox">
-                            <i class="fa-solid fa-check main__wrapper-product-checkbox-icon"></i>
-                        </div>
-                    </label>
-                    <div class="main__wrapper-product-info">
-                        <a class="main__wrapper-product-info-avatar">
-                            <img src="./images/giay-nike.png" alt="" class="main__wrapper-product-info-img">
-                        </a>
-                        <div class="main__wrapper-product-info-text">
-                            <h3 class="main__wrapper-product-info-name">Giày nike mới nhất test giàym giày nike xấu
-                                nhất, giày nike tệ nhất</h3>
-                            <div class="main__wrapper-product-info-desc">
-                                <span class="main__wrapper-product-info-sale">30% giảm</span>
-                                <span class="main__wrapper-product-info-freeship">Free ship</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product size -->
-                    <div class="main__wrapper-product-size">38</div>
-                    <!-- product quantity -->
-                    <div class="main__wrapper-product-quantity">
-                        <div class="main__wrapper-product-quantity-box">
-                            <button class="main__wrapper-product-quantity-discount">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <input type="text" value="1" min="1" max="99" class="main__wrapper-product-quantity-input">
-                            <button class="main__wrapper-product-quantity-increase">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- product price -->
-                    <div class="main__wrapper-product-quantity-price">
-                        <span class="main__wrapper-product-quantity-price-old">280.000đ</span>
-                        <span class="main__wrapper-product-quantity-price-current">200.000đ</span>
-                    </div>
-                </div>
-                <div class="main__wrapper-product-manipulation">
-                    <div class="main__wrapper-product-favourite">
-                        <i class="fa-regular fa-heart"></i>
-                        <span class="main__wrapper-product-text">Yêu thích</span>
-                    </div>
-                    <div class="main__wrapper-product-remove">
-                        <i class="fa-regular fa-trash-can"></i>
-                        <span class="main__wrapper-product-text">Xoá</span>
-                    </div>
-                </div>
+
+            <div class="main-render-product">
+                
             </div>
         </div>
         <!-- main checkout -->
@@ -153,7 +49,7 @@
             </div>
             <div class="main__checkout-right">
                 <div class="main__checkout-right-total">
-                    Tổng thanh toán(<span>1</span> sản phẩm):
+                    <span class="main__checkout-total-title">Tổng thanh toán(<span>1</span> sản phẩm):</span>
                     <span class="main__checkout-right-total-price">280.000đ</span>
                 </div>
                 <a href="#" class="main__checkout-right-link-checkout">Mua Hàng</a>
