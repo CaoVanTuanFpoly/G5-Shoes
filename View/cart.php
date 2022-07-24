@@ -3,7 +3,7 @@
 ?>
 <!-- main -->
 <div class="main">
-    <link rel="stylesheet" href="./css/cartScss.css"/>
+    <link rel="stylesheet" href="./css/cartScss.css" />
     <div class="grid wide">
         <h2 class="main__title">Giỏ hàng của tôi</h2>
         <p class="main__note">
@@ -28,13 +28,13 @@
             </div>
 
             <div class="main-render-product">
-                
+
             </div>
         </div>
         <!-- main checkout -->
         <div class="main__checkout">
             <div class="main__checkout-left">
-                <label for="#checkout-all" class="main__checkout-stardust">
+                <label for="#checkout-all" class="main__checkout-stardust js-checkAll-footer">
                     <input id="checkout-all" type="checkbox" class="main__checkout-stardust-input">
                     <div class="main__checkout-stardust-box">
                         <i class="fa-solid fa-check main__checkout-stardust-box-icon"></i>
@@ -45,12 +45,36 @@
                     <i class="fa-regular fa-trash-can"></i>
                     <span class="main__checkout-btn-remove-text">Xoá</span>
                 </button>
-                <p class="main__checkout-selected">1 sản phẩm đã chọn</p>
+                <p class="main__checkout-selected">0 sản phẩm đã chọn</p>
+                <div class="main__checkout-modal">
+                    <div class="main__checkout-message">
+                        <h3 class="main__checkout-message-header">
+                            <i class="fa-regular fa-circle-question main__checkout-message-icon"></i>
+                            <span class="main__checkout-message-title">G5 Shoes Thông Báo</span>
+                        </h3>
+                        <div class="main__checkout-message-content">
+                            <h4 class="ain__checkout-message-content-title">Bạn có muốn xoá 1 sản phẩm không?</h4>
+                        </div>
+                        <div class="main__checkout-message-actions">
+                            <button class="main__checkout-message-agree">Đồng ý</button>
+                            <button class="main__checkout-message-cancel">Huỷ bỏ</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__checkout-note">
+                    <div class="main__checkout-message">
+                        <h3 class="main__checkout-message-header">
+                            <i class="fa-regular fa-circle-question main__checkout-message-icon"></i>
+                            <span class="main__checkout-message-title">G5 Shoes Thông Báo</span>
+                        </h3>
+                        <h4 class="main__checkout-note-text">Vui lòng chọn sản phẩm</h4>
+                    </div>
+                </div>
             </div>
             <div class="main__checkout-right">
                 <div class="main__checkout-right-total">
-                    <span class="main__checkout-total-title">Tổng thanh toán(<span>1</span> sản phẩm):</span>
-                    <span class="main__checkout-right-total-price">280.000đ</span>
+                    <span class="main__checkout-total-title">Tổng thanh toán(<span>0</span> sản phẩm):</span>
+                    <span class="main__checkout-right-total-price" value="0">0đ</span>
                 </div>
                 <a href="#" class="main__checkout-right-link-checkout">Mua Hàng</a>
             </div>

@@ -2,101 +2,112 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 const cart = {
-  
-  // handle render product
-  handleRenderProduct() {
-    const stores = JSON.parse(localStorage.getItem("valueFromDetail")) ?? [];
-    if (stores) {
-      const parent = $(".main-render-product");
 
-      const data = stores
-        .map((store, index) => {
-          return `
-            <div class="main__wrapper-product">
-            <span class="idProd__store" hidden>${store.idProd}</span>
-            <div class="main__wrapper-product-main">
-                <!-- active là class khi checkbox được check -->
-                <label for="#checkbox-item" class="main__wrapper-product-label">
-                    <input id="checkbox-item" type="checkbox" class="main__wrapper-product-input">
-                    <div class="main__wrapper-product-wrapper-checkbox">
-                        <i class="fa-solid fa-check main__wrapper-product-checkbox-icon"></i>
+  // handle render product
+    handleRenderProduct() {
+
+        // format money
+        function formatMoneyVND(str) {
+            const toStringStr = str.toString();
+            return toStringStr.split('').reverse().reduce((prev, next, index) => {
+                return ((index % 3) ? next : (next + '.')) + prev
+            })
+        }
+
+        const stores = JSON.parse(localStorage.getItem("valueFromDetail")) ?? [];
+        if (stores) {
+        const parent = $(".main-render-product");
+
+        const data = stores
+            .map((store) => {
+            return `
+                <div class="main__wrapper-product">
+                <span class="idProd__store" hidden>${store.idProd}</span>
+                <div class="main__wrapper-product-main">
+                    <!-- active là class khi checkbox được check -->
+                    <label for="#checkbox-item" class="main__wrapper-product-label">
+                        <input id="checkbox-item" type="checkbox" class="main__wrapper-product-input">
+                        <div class="main__wrapper-product-wrapper-checkbox">
+                            <i class="fa-solid fa-check main__wrapper-product-checkbox-icon"></i>
+                        </div>
+                    </label>
+                    <div class="main__wrapper-product-info">
+                        <a class="main__wrapper-product-info-avatar">
+                            <img src="${store.imgProd}" alt="" class="main__wrapper-product-info-img">
+                        </a>
+                        <div class="main__wrapper-product-info-text">
+                            <h3 class="main__wrapper-product-info-name">${store.nameProd}</h3>
+                            <div class="main__wrapper-product-info-desc">
+                                <span class="main__wrapper-product-info-sale">30% giảm</span>
+                                <span class="main__wrapper-product-info-freeship">Free ship</span>
+                            </div>
+                        </div>
                     </div>
-                </label>
-                <div class="main__wrapper-product-info">
-                    <a class="main__wrapper-product-info-avatar">
-                        <img src="${store.imgProd}" alt="" class="main__wrapper-product-info-img">
-                    </a>
-                    <div class="main__wrapper-product-info-text">
-                        <h3 class="main__wrapper-product-info-name">${store.nameProd}</h3>
-                        <div class="main__wrapper-product-info-desc">
-                            <span class="main__wrapper-product-info-sale">30% giảm</span>
-                            <span class="main__wrapper-product-info-freeship">Free ship</span>
+                    <!-- product size -->
+                    <div class="main__wrapper-product-size">${store.size}</div>
+                    <!-- product quantity -->
+                    <div class="main__wrapper-product-quantity">
+                        <div class="main__wrapper-product-quantity-box">
+                            <button class="main__wrapper-product-quantity-discount">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <input type="text" value="${store.amount}" min="1" max="99" class="main__wrapper-product-quantity-input">
+                            <button class="main__wrapper-product-quantity-increase">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- product price -->
+                    <div class="main__wrapper-product-quantity-price">
+                        <span class="main__wrapper-product-quantity-price-old">280.000đ</span>
+                        <span class="main__wrapper-product-quantity-price-current" value="${store.priceProd}">${formatMoneyVND(store.priceProd) + 'đ'}</span>
+                    </div>
+                </div>
+                <div class="main__wrapper-product-manipulation">
+                    <div class="main__wrapper-product-favourite">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="main__wrapper-product-text">Yêu thích</span>
+                    </div>
+                    <div class="main__wrapper-product-remove">
+                        <i class="fa-regular fa-trash-can"></i>
+                        <span class="main__wrapper-product-text">Xoá</span>
+                    </div>
+                </div>
+                <div class="modal">
+                    <div class="modal__message">
+                        <div class="modal__header">
+                            <i class="fa-regular fa-circle-question"></i>
+                            <span class="modal__header-title">G5 Thông Báo</span>
+                        </div>
+                        <div class="modal__content">
+                            <h3 class="modal__content-text">Bạn có muốn xoá sản phẩm có tên là ${store.nameProd} này không?</h3>
+                        </div>
+                        <div class="modal__actions">
+                            <button class="modal__actions-agree">
+                                <i class="fa-solid fa-check modal__icon"></i>
+                                <span class="modal__actions-agree-title">Đồng Ý</span>
+                            </button>
+                            <button class="modal__actions-cancel">
+                                <i class="fa-solid fa-xmark modal__icon"></i>
+                                <span class="modal__actions-agree-title">Huỷ Bỏ</span>
+                            </button>
+                        </div>
                         </div>
                     </div>
                 </div>
-                <!-- product size -->
-                <div class="main__wrapper-product-size">${store.size}</div>
-                <!-- product quantity -->
-                <div class="main__wrapper-product-quantity">
-                    <div class="main__wrapper-product-quantity-box">
-                        <button class="main__wrapper-product-quantity-discount">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        <input type="text" value="${store.amount}" min="1" max="99" class="main__wrapper-product-quantity-input">
-                        <button class="main__wrapper-product-quantity-increase">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- product price -->
-                <div class="main__wrapper-product-quantity-price">
-                    <span class="main__wrapper-product-quantity-price-old">280.000đ</span>
-                    <span class="main__wrapper-product-quantity-price-current" value="${store.priceProd}">${store.priceProd}</span>
-                </div>
-            </div>
-            <div class="main__wrapper-product-manipulation">
-                <div class="main__wrapper-product-favourite">
-                    <i class="fa-regular fa-heart"></i>
-                    <span class="main__wrapper-product-text">Yêu thích</span>
-                </div>
-                <div class="main__wrapper-product-remove">
-                    <i class="fa-regular fa-trash-can"></i>
-                    <span class="main__wrapper-product-text">Xoá</span>
-                </div>
-            </div>
-            <div class="modal">
-                <div class="modal__message">
-                    <div class="modal__header">
-                        <i class="fa-regular fa-circle-question"></i>
-                        <span class="modal__header-title">G5 Question</span>
-                    </div>
-                    <div class="modal__content">
-                        <h3 class="modal__content-text">Bạn có muốn xoá sản phẩm có tên là ${store.nameProd} này không?</h3>
-                    </div>
-                    <div class="modal__actions">
-                        <button class="modal__actions-agree">
-                            <i class="fa-solid fa-check modal__icon"></i>
-                            <span class="modal__actions-agree-title">Đồng Ý</span>
-                        </button>
-                        <button class="modal__actions-cancel">
-                            <i class="fa-solid fa-xmark modal__icon"></i>
-                            <span class="modal__actions-agree-title">Huỷ Bỏ</span>
-                        </button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            `;
-        })
-        .join("");
+                `;
+            })
+            .join("");
 
-      parent.innerHTML = data;
-    } else {
-      throw new Error("localStorage is not data");
-    }
+        parent.innerHTML = data;
+        } else {
+            throw new Error("localStorage is not data");
+        }
   },
 
   handleActions() {
+
+    // Local Storage
     function localStorageProduct(key) {
       const stores = JSON.parse(localStorage.getItem(key)) ?? [];
 
@@ -151,12 +162,36 @@ const cart = {
                   `Can't remove the product because there are no products`
                 );
               }
+        },
+
+        removeAllOrEachProduct(props) {
+            if (Array.isArray(props)) {
+                if (stores.length > 0) {
+                    props.forEach((prop, index) => {
+                        const response = stores.find((store) => store.idProd === prop);
+                        if (response) {
+                            stores.forEach((store, index) => {
+                                if (store.idProd === prop) {
+                                  stores.splice(index, 1);
+                                  save(stores);
+                                }
+                            });
+                        }
+                    })
+                }
+                else {
+                    throw new Error( `Can't remove the product because there are no products`)
+                }
+            }
+            else {
+                throw new Error('The argument must be an array data type')
+            }
         }
       };
 
       return store;
     }
-
+    // handle on change price each product item and set to localStorage(key = "valueFormDetail");
     function handleActionsPriceChange(condition, amount, idPro, currentPrice) {
         const numberAmount = Number(amount);
         const numberCurrentPrice = Number(currentPrice);
@@ -197,6 +232,15 @@ const cart = {
     }
 
 
+    // format money
+    function formatMoneyVND(str) {
+        const toStringStr = str.toString();
+        return toStringStr.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + '.')) + prev
+        })
+    }
+
+
     // handle calculate total checkout
     const totalCheckOutView = $('.main__checkout-right-total-price');
     function handleToTalCheckOut () {
@@ -205,11 +249,12 @@ const cart = {
             const numberPriceProduct = Number(product.attributes.value.nodeValue);
             return acc + numberPriceProduct;
         }, 0)
-        totalCheckOutView.innerText = totalCheckOut;
+        totalCheckOutView.setAttribute('value', totalCheckOut);
+        totalCheckOutView.innerText = formatMoneyVND(totalCheckOut) + 'đ';
     }
-    handleToTalCheckOut();
+    
 
-
+    // get All list product
     const parents = $$(".main__wrapper-product");
 
     Array.from(parents).forEach((parent) => {
@@ -218,10 +263,9 @@ const cart = {
         const inputAmount = parent.querySelector(".main__wrapper-product-quantity-input");
         const priceProduct = parent.querySelector(".main__wrapper-product-quantity-price-current");
         const idProductStore = parent.querySelector(".idProd__store");
-
-
+   
         
-
+        // handle on increase each product item
         btnIncrease.onclick = () => {
             if (inputAmount.value >= 100) {
                 inputAmount.value = 100;
@@ -233,14 +277,33 @@ const cart = {
                     "increase",
                     inputAmount.attributes.value.nodeValue,
                     idProductStore.textContent,
-                    priceProduct.textContent
+                    priceProduct.attributes.value.nodeValue
                 );
-                priceProduct.textContent = totalPrice;
+                priceProduct.textContent = formatMoneyVND(totalPrice) + 'đ';
                 priceProduct.attributes.value.nodeValue = totalPrice;
-                handleToTalCheckOut();
+                // if has active, will set price to rootTotal view 
+                if (btnCheckEachProduct.classList.contains('active')) {
+                    const productHasCheck = Array.from(parents).filter((product, index) => {
+                        const labelCheck = product.querySelector('.main__wrapper-product-label.active');
+                        return labelCheck;
+                    })
+                    if (productHasCheck.length > 1) {
+                        const productPrices = Array.from(parents).reduce((acc, product) => {
+                            const price = product.querySelector('.main__wrapper-product-quantity-price-current');
+                            const numberPrice = Number.parseInt(price.attributes.value.nodeValue);
+                            return acc + numberPrice;
+                        }, 0);
+                        totalView.setAttribute('value', productPrices);
+                        totalView.textContent = formatMoneyVND(productPrices) + 'đ';
+                    }
+                    else {
+                        totalView.setAttribute('value', totalPrice);
+                        totalView.textContent = formatMoneyVND(totalPrice) + 'đ';
+                    }
+                }
             }
         };
-
+        // handle on decrease each product item
         btnDecrease.onclick = () => {
             if (inputAmount.value > 1) {
                 inputAmount.value = Number(inputAmount.value) - 1;
@@ -249,12 +312,30 @@ const cart = {
                     "decrease",
                     inputAmount.attributes.value.nodeValue,
                     idProductStore.textContent,
-                    priceProduct.textContent
+                    priceProduct.attributes.value.nodeValue
                     );
-                    priceProduct.textContent = totalPrice;
+                    priceProduct.textContent = formatMoneyVND(totalPrice) + 'đ';
                     priceProduct.attributes.value.nodeValue = totalPrice;
                     
-                handleToTalCheckOut();
+                    // if has active, will set price to rootTotal view 
+                    if (btnCheckEachProduct.classList.contains('active')) {
+                        const productHasCheck = Array.from(parents).filter((product, index) => {
+                            const labelCheck = product.querySelector('.main__wrapper-product-label.active');
+                            return labelCheck;
+                        })
+                        if (productHasCheck.length > 1) {
+                            const dataStorage = localStorageProduct('valueFromDetail');
+                            const response = dataStorage.get(idProductStore.textContent);
+                            const numberTotalView = Number.parseInt(totalView.attributes.value.nodeValue);
+                            const minus = numberTotalView - response.defaultPrice;
+                            totalView.setAttribute('value', minus);
+                            totalView.textContent = formatMoneyVND(minus) + 'đ';
+                        }
+                        else {
+                            totalView.setAttribute('value', totalPrice);
+                            totalView.textContent = formatMoneyVND(totalPrice) + 'đ';
+                        }
+                    }
             } else {
                 inputAmount.value = 1;
                 ;
@@ -262,16 +343,17 @@ const cart = {
                     "decrease",
                     inputAmount.attributes.value.nodeValue = 1,
                     idProductStore.textContent,
-                    priceProduct.textContent
+                    priceProduct.attributes.value.nodeValue
                     );
                     inputAmount.attributes.value.nodeValue = inputAmount.value;
-                    priceProduct.textContent = totalPrice;
+                    priceProduct.textContent = formatMoneyVND(totalPrice) + 'đ';
                     priceProduct.attributes.value.nodeValue = totalPrice;
-                    handleToTalCheckOut();
+                    
             }
         };
 
-       
+
+        // handle Remove each Product item
         function removeProduct() {
             const btnRemoveProduct = parent.querySelector('.main__wrapper-product-remove');
              // actions remove
@@ -302,44 +384,215 @@ const cart = {
             }
         }
         removeProduct();
+
+
+
+        // handle check each product
+        const btnCheckEachProduct = parent.querySelector(".main__wrapper-product-label");
+        const totalView = $('.main__checkout-right-total-price');
+        btnCheckEachProduct.onclick = function () {
+            this.classList.toggle('active');
+            let numberTotal = Number.parseInt(totalView.attributes.value.nodeValue);
+            if (this.classList.contains('active')) {
+                const numberCurrentPrice = Number.parseInt(priceProduct.attributes.value.nodeValue);
+                const sum = numberTotal + numberCurrentPrice;
+                totalView.setAttribute('value', sum);
+                totalView.textContent = formatMoneyVND(sum) + 'đ';
+                const parentHasActive = $$('.main__wrapper-product-label.active');
+                const selectedText = $('.main__checkout-selected');
+                const textTotal = $('.main__checkout-total-title');
+                textTotal.innerText = `Tổng thanh toán(${Array.from(parentHasActive).length} sản phẩm)`;
+                selectedText.innerText = `${Array.from(parentHasActive).length} sản phẩm đã chọn`;
+            }
+            else {
+                const numberCurrentPrice = Number.parseInt(priceProduct.attributes.value.nodeValue);
+                const minus = numberTotal - numberCurrentPrice;
+                totalView.setAttribute('value', minus);
+                totalView.textContent = formatMoneyVND(minus) + 'đ';
+                const parentHasActive = $$('.main__wrapper-product-label.active');
+                const selectedText = $('.main__checkout-selected');
+                const textTotal = $('.main__checkout-total-title');
+                textTotal.innerText = `Tổng thanh toán(${Array.from(parentHasActive).length} sản phẩm)`;
+                selectedText.innerText = `${Array.from(parentHasActive).length} sản phẩm đã chọn`;
+            }
+        }
     });
+    
+
+    // handle on checkAll
+    function handleCheckAll() {
+        btnCheckAll.classList.toggle('active');
+        btnCheckAllFooter.classList.toggle('active');
+
+        if (btnCheckAll.classList.contains('active')) {
+            Array.from(parents).forEach((product, index) => {
+                const productItemCheck = product.querySelector('.main__wrapper-product-label');
+                productItemCheck.classList.add('active');
+            });
+            const textTotal = $('.main__checkout-total-title');
+            const selectedText = $('.main__checkout-selected');
+            selectedText.innerText = `${Array.from(parents).length} sản phẩm đã chọn`;
+            textTotal.innerText = `Tổng thanh toán(${Array.from(parents).length} sản phẩm):`;
+            handleToTalCheckOut();
+        }	
+        else {
+            Array.from(parents).forEach((product, index) => {
+                const productItemCheck = product.querySelector('.main__wrapper-product-label');
+                productItemCheck.classList.remove('active');
+            });
+            const textTotal = $('.main__checkout-total-title');
+            textTotal.innerText = `Tổng thanh toán(0 sản phẩm):`;
+            $('.main__checkout-right-total-price').setAttribute('value', 0);
+            $('.main__checkout-right-total-price').textContent = '0đ';
+            const selectedText = $('.main__checkout-selected');
+            selectedText.innerText = `0 sản phẩm đã chọn`;
+        }
+    }
+    const btnCheckAll = $('.main__wrapper-stardust');
+    btnCheckAll.onclick = function () {
+        handleCheckAll();
+    }
+
+    // btnCheckAll footer
+    const btnCheckAllFooter = $('.js-checkAll-footer');
+    btnCheckAllFooter.onclick = function () {
+        handleCheckAll();
+    }
+
+    // btn selected all
+    const btnSelectedAll = $('.main__checkout-btn-select-all');
+    btnSelectedAll.onclick = function () {
+        handleCheckAll();
+    }
+
+    // btn remove footer
+    const btnRemoveFooter = $('.main__checkout-btn-remove');
+    btnRemoveFooter.onclick = function () {
+        const parentMain = $$('.main__wrapper-product');
+        const labelHasActive = Array.from(parentMain).filter((element, index) => {
+            const hasActive = element.querySelector('.main__wrapper-product-label.active');
+            return hasActive;
+        })
+        if (labelHasActive.length > 0) {
+            const modalHasActive = $('.main__checkout-modal');
+            const btnAgree = $('.main__checkout-message-agree');
+            const btnCancel = $('.main__checkout-message-cancel');
+            const authModal = $('.main__checkout-message');
+            handleShowModal();
+            $('.ain__checkout-message-content-title').textContent = `Bạn có muốn xoá ${labelHasActive.length} sản phẩm không?`;
+            function handleShowModal() {
+                modalHasActive.classList.add('active');
+            }
+
+            function handleHideModal() {
+                modalHasActive.classList.remove('active');
+            }
+
+            btnAgree.addEventListener('click', () => {
+                const idArray = [];
+                labelHasActive.forEach((hasActive) => {
+                    const idHasActive = hasActive.querySelector('.idProd__store');
+                    idArray.push(idHasActive.textContent);
+                })
+                const dataStore = localStorageProduct('valueFromDetail');
+                dataStore.removeAllOrEachProduct(idArray);
+                handleHideModal();
+                window.location.reload();
+            })
+            btnCancel.addEventListener('click', handleHideModal);
+            authModal.addEventListener('click', e => e.stopPropagation());
+
+        }
+        else {
+            const modalNoActive = $('.main__checkout-note');
+            modalNoActive.classList.add('active');
+            setTimeout(() => {
+                modalNoActive.classList.remove('active');
+            }, 1000)
+        }
+    }
   },
     
-
-  	// handle on check
-	handleOnCheckActive() {
-		const listProduct = $$('.main__wrapper-product');
-		const btnCheckAll = $('.main__wrapper-stardust');
-		btnCheckAll.onclick = function () {
-			this.classList.toggle('active');
-
-			if (this.classList.contains('active')) {
-				Array.from(listProduct).forEach((product, index) => {
-					const productItemCheck = product.querySelector('.main__wrapper-product-label');
-					productItemCheck.classList.add('active');
-				});
-				const textTotal = $('.main__checkout-total-title');
-				console.log(textTotal);
-				textTotal.innerText = `Tổng thanh toán(${Array.from(listProduct).length} sản phẩm):`;
-			}	
-			else {
-				Array.from(listProduct).forEach((product, index) => {
-					const productItemCheck = product.querySelector('.main__wrapper-product-label');
-					productItemCheck.classList.remove('active');
-				});
-				const textTotal = $('.main__checkout-total-title');
-				console.log(textTotal);
-				textTotal.innerText = `Tổng thanh toán(0 sản phẩm):`;
-			}
-		}
-
-		
-	},
     
+
+    // handle Submit
+    handleSubmit() {
+        const btnSubmit = $('.main__checkout-right-link-checkout');
+        btnSubmit.onclick = function (e) {
+            const _this = this;
+            const listProducts = $$('.main__wrapper-product');
+            const listProductHasActive = Array.from(listProducts).filter((product, index) => {
+                const hasActive = product.querySelector('.main__wrapper-product-label.active');
+                return hasActive;
+            })
+            if (listProductHasActive.length > 0) {
+                this.setAttribute('href', 'http://localhost/G5-Shoes/view/checkout.php');
+                listProductHasActive.forEach((product, index) => {
+                    const idProduct = product.querySelector('.idProd__store').textContent;
+                    const nameProduct = product.querySelector('.main__wrapper-product-info-name').textContent;
+                    const sizeProduct = product.querySelector('.main__wrapper-product-size').textContent;
+                    const amountProduct = product.querySelector('.main__wrapper-product-quantity-input').attributes.value.nodeValue;
+                    const priceProduct = product.querySelector('.main__wrapper-product-quantity-price-current').attributes.value.nodeValue;
+                    const imgProduct = product.querySelector('.main__wrapper-product-info-img').attributes.src.nodeValue;
+                    const storeFromCart = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
+                    if (storeFromCart.length > 0) {
+                        let flagIndex;
+                        const duplicateID = storeFromCart.find((store, index) => {
+                            flagIndex = index;
+                            return store.idProduct === idProduct;
+                        });
+                        if (duplicateID) {
+                            storeFromCart.splice(flagIndex, 1, {
+                                idProduct,
+                                nameProduct,
+                                sizeProduct,
+                                amountProduct,
+                                priceProduct,
+                                imgProduct
+                            });
+                            localStorage.setItem('dataFromCart', JSON.stringify(storeFromCart));
+                        }
+                        else {
+                            storeFromCart.unshift({
+                                idProduct,
+                                nameProduct,
+                                sizeProduct,
+                                amountProduct,
+                                priceProduct,
+                                imgProduct
+                            });
+                            localStorage.setItem('dataFromCart', JSON.stringify(storeFromCart));
+                        }
+                    }
+                    else {
+                        storeFromCart.unshift({
+                            idProduct,
+                            nameProduct,
+                            sizeProduct,
+                            amountProduct,
+                            priceProduct,
+                            imgProduct
+                        });
+                        localStorage.setItem('dataFromCart', JSON.stringify(storeFromCart));
+                    }
+                })
+            }
+            else {
+                e.preventDefault();
+                const modalNoActive = $('.main__checkout-note');
+                modalNoActive.classList.add('active');
+                setTimeout(() => {
+                    modalNoActive.classList.remove('active');
+                }, 1000)
+            }
+        }
+
+        
+    }
 };
 
-// ngày mai làm phần chẹcked và check từng sản phẩm, check ông nào ông đấy thêm vào localStorage với key là dataFromCart
+
 
 cart.handleRenderProduct();
 cart.handleActions();
-cart.handleOnCheckActive();
+cart.handleSubmit();

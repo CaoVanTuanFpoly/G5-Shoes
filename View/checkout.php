@@ -184,122 +184,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li class="main__wrapper-item">
-                                        <div class="main__wrapper-box-item">
-                                            <div class="main__wrapper-box-avatar">
-                                                <div class="main__wrapper-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                            </div>
-                                            <div class="main__wrapper-box-detail">
-                                                <h3 class="main__wrapper-box-detail-title">Nike Performance giày tốt giá xịn xịn, giày đẹp nhất, hãy là người có giác ngộ</h3>
-                                                <p class="main__wrapper-box-detail-desc">Size: 42</p>
-                                                <div class="main__wrapper-box-detail-footer">
-                                                    <div class="main__wrapper-box-detail-price">280.000đ</div>
-                                                    <div class="main__wrapper-box-control-quantity">
-                                                        <button class="main__wrapper-box-quantity-discount">
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1" class="main__wrapper-box-quantity-input">
-                                                        <button class="main__wrapper-box-quantity-inscrease">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="main__wrapper-item">
-                                        <div class="main__wrapper-box-item">
-                                            <div class="main__wrapper-box-avatar">
-                                                <div class="main__wrapper-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                            </div>
-                                            <div class="main__wrapper-box-detail">
-                                                <h3 class="main__wrapper-box-detail-title">Nike Performance giày tốt giá xịn xịn, giày đẹp nhất, hãy là người có giác ngộ</h3>
-                                                <p class="main__wrapper-box-detail-desc">Size: 42</p>
-                                                <div class="main__wrapper-box-detail-footer">
-                                                    <div class="main__wrapper-box-detail-price">280.000đ</div>
-                                                    <div class="main__wrapper-box-control-quantity">
-                                                        <button class="main__wrapper-box-quantity-discount">
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1" class="main__wrapper-box-quantity-input">
-                                                        <button class="main__wrapper-box-quantity-inscrease">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="main__wrapper-item">
-                                        <div class="main__wrapper-box-item">
-                                            <div class="main__wrapper-box-avatar">
-                                                <div class="main__wrapper-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                            </div>
-                                            <div class="main__wrapper-box-detail">
-                                                <h3 class="main__wrapper-box-detail-title">Nike Performance giày tốt giá xịn xịn, giày đẹp nhất, hãy là người có giác ngộ</h3>
-                                                <p class="main__wrapper-box-detail-desc">Size: 42</p>
-                                                <div class="main__wrapper-box-detail-footer">
-                                                    <div class="main__wrapper-box-detail-price">280.000đ</div>
-                                                    <div class="main__wrapper-box-control-quantity">
-                                                        <button class="main__wrapper-box-quantity-discount">
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1" class="main__wrapper-box-quantity-input">
-                                                        <button class="main__wrapper-box-quantity-inscrease">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="main__wrapper-item">
-                                        <div class="main__wrapper-box-item">
-                                            <div class="main__wrapper-box-avatar">
-                                                <div class="main__wrapper-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                            </div>
-                                            <div class="main__wrapper-box-detail">
-                                                <h3 class="main__wrapper-box-detail-title">Nike Performance giày tốt giá xịn xịn, giày đẹp nhất, hãy là người có giác ngộ</h3>
-                                                <p class="main__wrapper-box-detail-desc">Size: 42</p>
-                                                <div class="main__wrapper-box-detail-footer">
-                                                    <div class="main__wrapper-box-detail-price">280.000đ</div>
-                                                    <div class="main__wrapper-box-control-quantity">
-                                                        <button class="main__wrapper-box-quantity-discount">
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1" class="main__wrapper-box-quantity-input">
-                                                        <button class="main__wrapper-box-quantity-inscrease">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="main__wrapper-item">
-                                        <div class="main__wrapper-box-item">
-                                            <div class="main__wrapper-box-avatar">
-                                                <div class="main__wrapper-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
-                                            </div>
-                                            <div class="main__wrapper-box-detail">
-                                                <h3 class="main__wrapper-box-detail-title">Nike Performance giày tốt giá xịn xịn, giày đẹp nhất, hãy là người có giác ngộ</h3>
-                                                <p class="main__wrapper-box-detail-desc">Size: 42</p>
-                                                <div class="main__wrapper-box-detail-footer">
-                                                    <div class="main__wrapper-box-detail-price">280.000đ</div>
-                                                    <div class="main__wrapper-box-control-quantity">
-                                                        <button class="main__wrapper-box-quantity-discount">
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1" class="main__wrapper-box-quantity-input">
-                                                        <button class="main__wrapper-box-quantity-inscrease">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    </li>                                    
                                 </ul>
                                 <div class="main__order">
                                     <div class="main__order-subtotal">
@@ -323,6 +208,7 @@
                 </div>
             </div>
         </div>
+        <script src="./js/checkout.js"></script>
 <?php
     include('./footer.php');
 ?>
