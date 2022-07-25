@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2022 at 02:32 AM
+-- Generation Time: Jul 20, 2022 at 03:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -24,6 +24,75 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bill`
+--
+
+CREATE TABLE `bill` (
+  `billID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `dateCreate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billdetails`
+--
+
+CREATE TABLE `billdetails` (
+  `detailID` int(11) NOT NULL,
+  `billID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `statusID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `categoryID` int(11) NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`categoryID`, `category`) VALUES
+(1, 'Jordan'),
+(2, 'Nike'),
+(3, 'Puma'),
+(4, 'Adidas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `level`
+--
+
+CREATE TABLE `level` (
+  `levelID` int(11) NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This is a table descripting about role';
+
+--
+-- Dumping data for table `level`
+--
+
+INSERT INTO `level` (`levelID`, `role`) VALUES
+(1, 'admin'),
+(2, 'user');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -38,7 +107,7 @@ CREATE TABLE `product` (
   `img4` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `charge` int(11) NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This is a table of product';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `product`
@@ -207,21 +276,146 @@ INSERT INTO `product` (`productID`, `name`, `categoryID`, `sizeID`, `img1`, `img
 (159, 'ADISTAR CS', 4, 4, '9.1adidas.png', '9.2adidas.png', '9.3adidas.png', '9.4adidas.png', 4200000, 'Lấy cảm hứng từ chuyển động vĩnh cửu, giày ADISTAR CS hỗ trợ các runner chinh phục kỷ lục cá nhân cự ly dài và hơn thế nữa. Nhằm mang lại cảm giác thoải mái và nâng đỡ, đôi giày này có đường cong dài ôm dọc mũi giày, tạo chuyển động nhịp nhàng, mượt mà và đều đặn giúp bạn sải bước tiếp theo. Thiết kế chú trọng khả năng bảo vệ gót chân và nâng đỡ thân giày.'),
 (160, 'ADIDAS NMD R1', 4, 4, '10.1adidas.png', '10.2adidas.png', '10.3adidas.png', '10.4adidas.png', 3600000, 'Phong cách giày chạy bộ dành cho hành trình khám phá mỗi ngày. Phiên bản cải tiến này của đôi giày adidas NMD R1 là bước tiến đột phá dựa trên đôi giày nguyên bản phong cách thập niên 80, với các miếng bịt đế giữa có tô viền và đầu bọc dây giày sặc sỡ mang đến nét mới mẻ cho thiết kế. Thân giày bằng vải dệt kim co giãn ôm chân cho cảm giác thoải mái khi di chuyển. Quãng đường dài di chuyển mỗi ngày hay lề đường trơn trượt đều là chuyện nhỏ, nhờ có đệm BOOST và đế ngoài bằng cao su siêu bám. Thân giày làm từ loại sợi hiệu năng cao có chứa tối thiểu 50% chất liệu Parley Ocean Plastic — rác thải nhựa tái chế thu gom từ các vùng đảo xa, bãi biển, khu dân cư ven biển và đường bờ biển, nhằm ngăn chặn ô nhiễm đại dương. 50% thành phần còn lại của sợi dệt là polyester tái chế');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `size`
+--
+
+CREATE TABLE `size` (
+  `sizeID` int(11) NOT NULL,
+  `size` int(11) NOT NULL,
+  `sizeAmount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `size`
+--
+
+INSERT INTO `size` (`sizeID`, `size`, `sizeAmount`) VALUES
+(1, 38, 500),
+(2, 39, 500),
+(3, 40, 500),
+(4, 41, 500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `statusID` int(11) NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`statusID`, `status`) VALUES
+(1, 'Chờ xác nhận'),
+(2, 'Đã xác nhận'),
+(3, 'Đã giao'),
+(4, 'Đã hủy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `userID` int(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fullName` int(11) NOT NULL,
+  `gender` tinyint(4) NOT NULL,
+  `birthday` int(11) NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phoneNumber` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `levelID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This is a table of user';
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`billID`),
+  ADD KEY `fr_billofuser` (`userID`);
+
+--
+-- Indexes for table `billdetails`
+--
+ALTER TABLE `billdetails`
+  ADD KEY `billID_fr` (`billID`),
+  ADD KEY `fr_billdetails_status` (`statusID`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`categoryID`);
+
+--
+-- Indexes for table `level`
+--
+ALTER TABLE `level`
+  ADD PRIMARY KEY (`levelID`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`productID`),
-  ADD KEY `fk_product_category` (`categoryID`),
-  ADD KEY `fk_product_size` (`sizeID`);
+  ADD KEY `fk_product_size` (`sizeID`),
+  ADD KEY `fk_product_category` (`categoryID`);
+
+--
+-- Indexes for table `size`
+--
+ALTER TABLE `size`
+  ADD PRIMARY KEY (`sizeID`);
+
+--
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`statusID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`),
+  ADD KEY `fr_role` (`levelID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `billID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `level`
+--
+ALTER TABLE `level`
+  MODIFY `levelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -230,16 +424,53 @@ ALTER TABLE `product`
   MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
+  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bill`
+--
+ALTER TABLE `bill`
+  ADD CONSTRAINT `fr_bill_product` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fr_billofuser` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `billdetails`
+--
+ALTER TABLE `billdetails`
+  ADD CONSTRAINT `billID_fr` FOREIGN KEY (`billID`) REFERENCES `bill` (`billID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fr_billdetails_status` FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
 
 --
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `fk_product_category` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
-  ADD CONSTRAINT `fk_product_size` FOREIGN KEY (`sizeID`) REFERENCES `size` (`sizeID`),
-  ADD CONSTRAINT `fr_category` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_product_category` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_product_size` FOREIGN KEY (`sizeID`) REFERENCES `size` (`sizeID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `size`
+--
+ALTER TABLE `size`
+  ADD CONSTRAINT `fr_size_product` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `fr_role` FOREIGN KEY (`levelID`) REFERENCES `level` (`levelID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

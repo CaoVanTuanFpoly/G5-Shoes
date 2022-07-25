@@ -189,15 +189,15 @@
                                 <div class="main__order">
                                     <div class="main__order-subtotal">
                                         <div class="main__order-subtotal-title">Tổng phụ</div>
-                                        <div class="main__order-subtotal-price">280.000đ</div>
+                                        <div class="main__order-subtotal-price">0đ</div>
                                     </div>
                                     <div class="main__order-sales">
-                                        <div class="main__order-sales-discount">Giảm giá(<span>20%</span>)</div>
-                                        <div class="main__order-discount-price">-<span class="main__order-discount-number">20.000đ</span></div>
+                                        <div class="main__order-sales-discount">Giảm giá(<span>0%</span>)</div>
+                                        <div class="main__order-discount-price">-<span class="main__order-discount-number">0đ</span></div>
                                     </div>
                                     <div class="main__order-total">
                                         <div class="main__order-sales-discount">Tổng thanh toán</div>
-                                        <div class="main__order-total-price">260.000đ</div>
+                                        <div class="main__order-total-price" value="0">0đ</div>
                                     </div>
                                 </div>
                                 <!-- btn checkout -->

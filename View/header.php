@@ -120,72 +120,10 @@ $sizeDAO = new SizeDAO();
                                     <div class="header__cart">
                                         <h3 class="header__cart-title">Giỏ hàng</h3>
                                         <ul class="header__cart-list">
-                                            <li class="header__cart-item">
-                                                <a href="#" class="header__cart-link">
-                                                    <div class="header__cart-info">
-                                                        <div class="header__cart-info-avatar">
-                                                            <img src="./images/giay-mau-show.png" alt="" class="header__cart-info-img">
-                                                        </div>
-                                                        <div class="header__cart-info-text">
-                                                            <h3 class="header__cart-info-name">Giày nike mới nhất tại shop</h3>
-                                                            <p class="header__cart-info-desc">Size: 40</p>
-                                                            <p class="header__cart-info-desc">Số lượng: 1</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- price -->
-                                                    <div class="header__cart-component">
-                                                        <span class="header__cart-total-component">200.000đ</span>
-                                                        <button class="header__cart-remove-component">
-                                                            <i class="fa-regular fa-trash-can"></i>
-                                                        </button>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="header__cart-item">
-                                                <a href="#" class="header__cart-link">
-                                                    <div class="header__cart-info">
-                                                        <div class="header__cart-info-avatar">
-                                                            <img src="./images/giay-mau-show.png" alt="" class="header__cart-info-img">
-                                                        </div>
-                                                        <div class="header__cart-info-text">
-                                                            <h3 class="header__cart-info-name">Giày nike mới nhất tại shop</h3>
-                                                            <p class="header__cart-info-desc">Size: 40</p>
-                                                            <p class="header__cart-info-desc">Số lượng: 1</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- price -->
-                                                    <div class="header__cart-component">
-                                                        <span class="header__cart-total-component">200.000đ</span>
-                                                        <button class="header__cart-remove-component">
-                                                            <i class="fa-regular fa-trash-can"></i>
-                                                        </button>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="header__cart-item">
-                                                <a href="#" class="header__cart-link">
-                                                    <div class="header__cart-info">
-                                                        <div class="header__cart-info-avatar">
-                                                            <img src="./images/giay-mau-show.png" alt="" class="header__cart-info-img">
-                                                        </div>
-                                                        <div class="header__cart-info-text">
-                                                            <h3 class="header__cart-info-name">Giày nike mới nhất tại shop</h3>
-                                                            <p class="header__cart-info-desc">Size: 40</p>
-                                                            <p class="header__cart-info-desc">Số lượng: 1</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- price -->
-                                                    <div class="header__cart-component">
-                                                        <span class="header__cart-total-component">200.000đ</span>
-                                                        <button class="header__cart-remove-component">
-                                                            <i class="fa-regular fa-trash-can"></i>
-                                                        </button>
-                                                    </div>
-                                                </a>
-                                            </li>
+                
                                         </ul>
                                         <div class="header__cart-link-box">
-                                            <a href="#" class="header__cart-link-navigation">Xem giỏ hàng</a>
+                                            <a href="./cart.php" class="header__cart-link-navigation">Xem giỏ hàng</a>
                                         </div>
                                     </div> 
                                 </div>

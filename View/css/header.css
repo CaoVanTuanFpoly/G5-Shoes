@@ -320,8 +320,9 @@
   
   .header__cart-link-navigation {
     display: inline-block;
-    padding: 8px 12px;
+    padding: 6px 8px;
     color: #fff;
+    font-size: 1.5rem !important;
     font-weight: 600;
     background-color: var(--sub-color);
     text-decoration: none;
@@ -495,4 +496,8 @@
   
   .header__information-count-information {
     top: -10px;
+  }
+
+  .header__information-count-cart {
+    display: none;
   }

@@ -267,4 +267,5 @@
                 </div>
             </div>
         </main>
+        <script src="./js/index.js"></script>
         <?php include './footer.php'; ?>

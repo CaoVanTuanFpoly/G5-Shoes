@@ -527,7 +527,7 @@ const cart = {
             })
             if (listProductHasActive.length > 0) {
                 this.setAttribute('href', 'http://localhost/G5-Shoes/view/checkout.php');
-                listProductHasActive.forEach((product, index) => {
+                listProductHasActive.forEach((product) => {
                     const idProduct = product.querySelector('.idProd__store').textContent;
                     const nameProduct = product.querySelector('.main__wrapper-product-info-name').textContent;
                     const sizeProduct = product.querySelector('.main__wrapper-product-size').textContent;
@@ -542,36 +542,67 @@ const cart = {
                             return store.idProduct === idProduct;
                         });
                         if (duplicateID) {
+                            const dataFormDetail = JSON.parse(localStorage.getItem('valueFromDetail')) ?? [];
+                            let priceDefault;
+                            if (dataFormDetail.length > 0) {
+                                dataFormDetail.forEach((product, index) => {
+                                    if (product.idProd === idProduct) {
+                                        priceDefault = product.defaultPrice;
+                                    }
+                                });
+                            }
                             storeFromCart.splice(flagIndex, 1, {
                                 idProduct,
                                 nameProduct,
                                 sizeProduct,
                                 amountProduct,
                                 priceProduct,
-                                imgProduct
+                                imgProduct,
+                                priceDefault,
                             });
                             localStorage.setItem('dataFromCart', JSON.stringify(storeFromCart));
                         }
                         else {
+                            const dataFormDetail = JSON.parse(localStorage.getItem('valueFromDetail')) ?? [];
+                            let priceDefault;
+                            if (dataFormDetail.length > 0) {
+                                dataFormDetail.forEach((product, index) => {
+                                    if (product.idProd === idProduct) {
+                                        priceDefault = product.defaultPrice;
+                                    }
+                                });
+                            }
                             storeFromCart.unshift({
                                 idProduct,
                                 nameProduct,
                                 sizeProduct,
                                 amountProduct,
                                 priceProduct,
-                                imgProduct
+                                imgProduct,
+                                priceDefault
                             });
                             localStorage.setItem('dataFromCart', JSON.stringify(storeFromCart));
                         }
                     }
                     else {
+                        const dataFormDetail = JSON.parse(localStorage.getItem('valueFromDetail')) ?? [];
+                            let priceDefault;
+                            if (dataFormDetail.length > 0) {
+                                dataFormDetail.forEach((product, index) => {
+                                    if (product.idProd === idProduct) {
+                                        priceDefault = product.defaultPrice;
+                                    }
+                                });
+                            }
+
                         storeFromCart.unshift({
                             idProduct,
                             nameProduct,
                             sizeProduct,
                             amountProduct,
                             priceProduct,
-                            imgProduct
+                            imgProduct,
+                            priceDefault
                         });
                         localStorage.setItem('dataFromCart', JSON.stringify(storeFromCart));
                     }
