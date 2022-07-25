@@ -12,10 +12,10 @@
                         đặt hàng</span>
                 </p>
                 <div class="main__content">
+                    <form id="form-user-cart" action="" method="post">
                     <div class="row sm-gutter">
                         <div class="col l-8">
                             <div class="main__wrapper">
-                                <form id="form-user-cart" action="" method="post">
                                     <!-- box1 -->
                                     <div class="main__wrapper-box">
                                         <h1 class="main__wrapper-box-title">Chi tiết cá nhân</h1>
@@ -94,97 +94,98 @@
                                             <div class="row sm-gutter">
                                                 <div class="col l-6">
                                                     <div class="main__wrapper-box-component pd-10 paypal">
-                                                        <label for="input-momo" class="main__wrapper-box-component-label">Thanh toán thẻ</label>
-                                                        <div class="main__wrapper-box-component-view paypal">
+                                                        <label class="main__wrapper-box-component-label">Thanh toán thẻ</label>
+                                                        <label for="input-momo" class="main__wrapper-box-component-view paypal">
                                                             <div class="main__wrapper-box-component-avatar">
                                                                 <img src="https://www.coolmate.me/images/momo-icon.png" alt="" class="main__wrapper-box-component-img">
                                                             </div>
                                                             <div class="main__wrapper-box-component-text">
                                                                 <h3 class="main__wrapper-box-component-title">Ví điện tử momo</h3>
                                                             </div>
-                                                        </div>
-                                                        <input id="input-momo" type="radio" class="main__wrapper-box-component-paypal-radio">
+                                                        </label>
+                                                        <input id="input-momo" type="radio" name="radio-pay" class="main__wrapper-box-component-paypal-radio">
                                                     </div>
                                                     <span class="main__wrapper-box-component-error"></span>
                                                 </div>
                                                 <div class="col l-6">
                                                     <div class="main__wrapper-box-component pd-10 paypal">
-                                                        <label for="input-momo" class="main__wrapper-box-component-label">Thanh toán thẻ</label>
-                                                        <div class="main__wrapper-box-component-view paypal">
+                                                        <label class="main__wrapper-box-component-label">Thanh toán thẻ</label>
+                                                        <label for="input-zalopay" class="main__wrapper-box-component-view paypal">
                                                             <div class="main__wrapper-box-component-avatar">
                                                                 <img src="https://www.coolmate.me/images/logo-zalopay.svg" alt="" class="main__wrapper-box-component-img">
                                                             </div>
                                                             <div class="main__wrapper-box-component-text">
                                                                 <h3 class="main__wrapper-box-component-title">Ví điện tử zaloPay</h3>
                                                             </div>
-                                                        </div>
-                                                        <input id="input-momo" type="radio" class="main__wrapper-box-component-paypal-radio">
+                                                        </label>
+                                                        <input id="input-zalopay" type="radio" name="radio-pay" class="main__wrapper-box-component-paypal-radio">
                                                     </div>
                                                     <span class="main__wrapper-box-component-error"></span>
                                                 </div>
                                                 <div class="col l-6">
                                                     <div class="main__wrapper-box-component mt-20 pd-10 paypal">
-                                                        <label for="input-momo" class="main__wrapper-box-component-label">Thanh toán thẻ</label>
-                                                        <div class="main__wrapper-box-component-view paypal">
+                                                        <label class="main__wrapper-box-component-label">Thanh toán thẻ</label>
+                                                        <label for="input-shopeepay" class="main__wrapper-box-component-view paypal">
                                                             <div class="main__wrapper-box-component-avatar">
                                                                 <img src="https://mcdn.coolmate.me/image/September2021/195dbf69c0ac36f26fbd_(1).png" alt="" class="main__wrapper-box-component-img">
                                                             </div>
                                                             <div class="main__wrapper-box-component-text">
                                                                 <h3 class="main__wrapper-box-component-title">Ví điện tử ShopeePay</h3>
                                                             </div>
-                                                        </div>
-                                                        <input id="input-momo" type="radio" class="main__wrapper-box-component-paypal-radio">
+                                                        </label>
+                                                        <input id="input-shopeepay" type="radio" name="radio-pay" class="main__wrapper-box-component-paypal-radio">
                                                     </div>
                                                     <span class="main__wrapper-box-component-error"></span>
                                                 </div>
                                                 <div class="col l-6">
                                                     <div class="main__wrapper-box-component mt-20 pd-10 paypal">
-                                                        <label for="input-momo" class="main__wrapper-box-component-label">Thanh toán thẻ</label>
-                                                        <div class="main__wrapper-box-component-view paypal">
+                                                        <label class="main__wrapper-box-component-label">Thanh toán thẻ</label>
+                                                        <label for="input-viettelpay" class="main__wrapper-box-component-view paypal">
                                                             <div class="main__wrapper-box-component-avatar">
                                                                 <img src="https://www.viettelpay.vn/_data/slider/slide_vtp.jpg" alt="" class="main__wrapper-box-component-img">
                                                             </div>
                                                             <div class="main__wrapper-box-component-text">
                                                                 <h3 class="main__wrapper-box-component-title">Ví điện tử ViettelPay</h3>
                                                             </div>
-                                                        </div>
-                                                        <input id="input-momo" type="radio" class="main__wrapper-box-component-paypal-radio">
+                                                        </label>
+                                                        <input id="input-viettelpay" type="radio" name="radio-pay" class="main__wrapper-box-component-paypal-radio">
                                                     </div>
                                                     <span class="main__wrapper-box-component-error"></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                         <div class="col l-4">
                             <div class="main__wrapper">
-                                <h2 class="main__wrapper-title">Giỏ hàng của tôi</h2>
-                                <ul class="main__wrapper-list">
-                                    <li class="main__wrapper-item">
-                                        <div class="main__wrapper-box-item">
-                                            <div class="main__wrapper-box-avatar">
-                                                <div class="main__wrapper-box-img" style="background-image: url(./images/giay-mau-show.png)"></div>
+                                <div class="main__wrapper-header">
+                                    <h2 class="main__wrapper-title">Giỏ hàng của tôi</h2>
+                                    <button class="main__wrapper-btn-remove-all">Xoá tất cả</button>
+                                    <div class="modal">
+                                        <div class="modal__message">
+                                            <div class="modal__header">
+                                                <i class="fa-regular fa-circle-question"></i>
+                                                <span class="modal__header-title">G5 Thông Báo</span>
                                             </div>
-                                            <div class="main__wrapper-box-detail">
-                                                <h3 class="main__wrapper-box-detail-title">Nike Performance giày tốt giá xịn xịn, giày đẹp nhất, hãy là người có giác ngộ</h3>
-                                                <p class="main__wrapper-box-detail-desc">Size: 42</p>
-                                                <div class="main__wrapper-box-detail-footer">
-                                                    <div class="main__wrapper-box-detail-price">280.000đ</div>
-                                                    <div class="main__wrapper-box-control-quantity">
-                                                        <button class="main__wrapper-box-quantity-discount">
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1" class="main__wrapper-box-quantity-input">
-                                                        <button class="main__wrapper-box-quantity-inscrease">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                            <div class="modal__content">
+                                                <h3 class="modal__content-text">Bạn có muốn xoá hết tất cả sản phẩm không?</h3>
+                                            </div>
+                                            <div class="modal__actions">
+                                                <button class="modal__actions-agree">
+                                                    <i class="fa-solid fa-check modal__icon"></i>
+                                                    <span class="modal__actions-agree-title">Đồng Ý</span>
+                                                </button>
+                                                <button class="modal__actions-cancel">
+                                                    <i class="fa-solid fa-xmark modal__icon"></i>
+                                                    <span class="modal__actions-agree-title">Huỷ Bỏ</span>
+                                                </button>
                                             </div>
                                         </div>
-                                    </li>                                    
+                                    </div>
+                                </div>
+                                <ul class="main__wrapper-list">
+                                                                     
                                 </ul>
                                 <div class="main__order">
                                     <div class="main__order-subtotal">
@@ -205,6 +206,8 @@
                             </div>
                         </div>
                     </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>

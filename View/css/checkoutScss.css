@@ -37,6 +37,32 @@
   padding: 20px;
 }
 
+.main__wrapper-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main__wrapper-btn-remove-all {
+    padding: 6px 10px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    user-select: none;
+    background-color: #efeeee;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.main__wrapper-btn-remove-all:hover {
+    color: var(--sub-color);
+    font-weight: 600;
+}
+
 .main__wrapper-box.mt-40 {
   margin-top: 40px;
 }
@@ -113,6 +139,7 @@
   display: flex;
   align-items: center;
   z-index: 1;
+  cursor: pointer;
 }
 
 .main__wrapper-box-component-avatar {
@@ -157,8 +184,13 @@
 .main__wrapper-box-item {
   display: flex;
   align-items: flex-start;
-  padding: 14px 0;
+  padding: 22px 0;
 }
+
+.main__wrapper-box-item:hover {
+    background-color: #fafafa;
+}
+
 
 .main__wrapper-box-avatar {
   min-width: 100px;
@@ -181,18 +213,45 @@
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 
 .main__wrapper-box-detail-title {
   font-size: 1.6rem;
   color: var(--text-color);
-  max-height: 2.2rem;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.main__wrapper-box-detail-title-text {
+    max-height: 2.2rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.main__wrapper-box-detail-btn-remove {
+    border: none;
+    outline: none;
+    user-select: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.main__wrapper-box-detail-btn-remove:hover {
+    background-color: #ccc;
+}
+
+.main__wrapper-box-detail-btn-remove i {
+    font-size: 1.6rem;
+    color: #666;
+}
+
 
 .main__wrapper-box-detail-desc {
   margin: 6px 0 0 0;
@@ -328,4 +387,141 @@
   outline: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+  display: none;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal__message {
+  width: 400px;
+  position: absolute;
+  top: 20%;
+  right: 10px;
+  transform: translateY(-20%);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  z-index: 1000000;
+  animation: modalMessage ease 0.2s;
+}
+
+@keyframes modalMessage {
+  from {
+    transform: translate(300px, -20%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, -20%);
+    opacity: 1;
+  }
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#5ec9dd;
+  padding: 14px 0;
+  color: #fff;
+  font-size: 2.6rem;
+}
+
+.modal__header-title {
+  margin-left: 6px;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  font-weight: 600;
+}
+
+.modal__content {
+  padding: 20px;
+}
+
+.modal__content-text {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.modal__actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.modal__actions-agree {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 6px 16px;
+  background-color: #5ec9dd;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal__actions-cancel {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 6px 16px;
+  background-color: #e2747e;
+  border-radius: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal__icon {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.modal__actions-agree-title {
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+/* modal has element */
+.main__checkout-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: none;
+  
+}
+
+.main__checkout-modal.active {
+  display: flex;
+}
+
+@keyframes checkoutModal {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(100%);
+    opacity: 1;
+  }
 }

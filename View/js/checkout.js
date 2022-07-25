@@ -17,55 +17,71 @@ const checkout = {
         const _this = this;
         const getDataCartStorage = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
         const ulRoot = $('.main__wrapper-list');
-        const htmls = getDataCartStorage.map((data) => {
-            let sizeId = '';
-            switch (data.sizeProduct) {
-                case "38":
-                    sizeId = '1';
-                    break;
-                case "39":
-                    sizeId = '2';
-                    break;
-                case "40":
-                    sizeId = '3';
-                    break;
-                case "41": 
-                    sizeId = '4';
-                    break;
-                
-                default:
-                    break;
-            }
+        if (getDataCartStorage.length > 0) {
+            const htmls = getDataCartStorage.map((data) => {
+                let sizeId = '';
+                switch (data.sizeProduct) {
+                    case "38":
+                        sizeId = '1';
+                        break;
+                    case "39":
+                        sizeId = '2';
+                        break;
+                    case "40":
+                        sizeId = '3';
+                        break;
+                    case "41": 
+                        sizeId = '4';
+                        break;
+                    
+                    default:
+                        break;
+                }
 
 
-            return `
-            <li class="main__wrapper-item">
-                <span class="main__id-product-from-cart" hidden name="id-product">${data.idProduct}</span>
-                <div class="main__wrapper-box-item">
-                    <div class="main__wrapper-box-avatar">
-                        <div class="main__wrapper-box-img" name="img-product" style="background-image: url(${data.imgProduct})"></div>
-                    </div>
-                    <div class="main__wrapper-box-detail">
-                        <h3 class="main__wrapper-box-detail-title" name="name-product">${data.nameProduct}</h3>
-                        <p class="main__wrapper-box-detail-desc" name="size-product" value="${sizeId}">Size: ${data.sizeProduct}</p>
-                        <div class="main__wrapper-box-detail-footer">
-                            <div class="main__wrapper-box-detail-price" name="price-product" default="${data.priceDefault}" value="${data.priceProduct}">${_this.formatMoneyVND(data.priceProduct) + 'đ'}</div>
-                            <div class="main__wrapper-box-control-quantity">
-                                <button class="main__wrapper-box-quantity-discount">
-                                    <i class="fa-solid fa-minus"></i>
+                return `
+                <li class="main__wrapper-item">
+                    <span class="main__id-product-from-cart" hidden name="id-product">${data.idProduct}</span>
+                    <div class="main__wrapper-box-item">
+                        <div class="main__wrapper-box-avatar">
+                            <div class="main__wrapper-box-img" name="img-product" style="background-image: url(${data.imgProduct})"></div>
+                        </div>
+                        <div class="main__wrapper-box-detail">
+                            <h3 class="main__wrapper-box-detail-title" name="name-product">
+                                <span class="main__wrapper-box-detail-title-text">${data.nameProduct}</span>
+                                <button class="main__wrapper-box-detail-btn-remove">
+                                    <i class="fa-regular fa-trash-can btn-remove-icon"></i>
                                 </button>
-                                <input type="text" name="amount-product" value="${data.amountProduct}" min="1" max="100" class="main__wrapper-box-quantity-input">
-                                <button class="main__wrapper-box-quantity-inscrease">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
+                            </h3>
+                            <p class="main__wrapper-box-detail-desc" name="size-product" value="${sizeId}">Size: ${data.sizeProduct}</p>
+                            <div class="main__wrapper-box-detail-footer">
+                                <div class="main__wrapper-box-detail-price" name="price-product" default="${data.priceDefault}" value="${data.priceProduct}">${_this.formatMoneyVND(data.priceProduct) + 'đ'}</div>
+                                <div class="main__wrapper-box-control-quantity">
+                                    <button class="main__wrapper-box-quantity-discount">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                    <input type="text" name="amount-product" value="${data.amountProduct}" min="1" max="100" class="main__wrapper-box-quantity-input">
+                                    <button class="main__wrapper-box-quantity-inscrease">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>  
-            `
-        });
-        ulRoot.innerHTML = htmls.join('');
+                </li>  
+                `
+            });
+            ulRoot.innerHTML = htmls.join('');
+        }
+        else {
+            const h3Message = document.createElement('h3');
+            h3Message.innerText = "Chưa có sản phẩm nào trong trang thanh toán của bạn";
+            h3Message.style = 'color: #8c8b8e';
+            h3Message.style.textAlign = 'center';
+            h3Message.style.padding = '20px'
+            h3Message.style.fontSize = '1.5rem';
+            ulRoot.appendChild(h3Message);
+        }
     }, 
 
     localStorageFromCart(key) {
@@ -204,9 +220,115 @@ const checkout = {
         total.setAttribute('value', sumTotal);
         total.textContent = _this.formatMoneyVND(sumTotal) + 'đ';
         subTotal.textContent = _this.formatMoneyVND(sumTotal) + 'đ';
+    },
+
+
+
+    // handle Remove All Product
+    removeAllProducts() {
+        const _this = this;
+        const btnRemoveAll = $('.main__wrapper-btn-remove-all');
+        const modal = $('.modal');
+        const btnAgree = $('.modal__actions-agree');
+        const btnCancel = $('.modal__actions-cancel');
+
+        function handleShowModal() {
+            modal.classList.add('active');
+        }
+
+        function handleHideModal() {
+            modal.classList.remove('active');
+        }
+
+        btnRemoveAll.onclick = function (e) {
+            e.preventDefault();
+            handleShowModal();
+
+            btnCancel.addEventListener('click', e => {
+                handleHideModal();
+                e.preventDefault();
+            });
+
+            btnAgree.onclick = function (e) {
+                e.preventDefault();
+                localStorage.setItem('dataFromCart', JSON.stringify([]));
+                handleHideModal();
+                window.location.reload();
+            }
+        }
+    },
+
+
+    // remove each product
+    removeEachProduct() {
+        const parents = $$('.main__wrapper-item');
+        Array.from(parents).forEach(element => {
+            const idProduct = element.querySelector('.main__id-product-from-cart').textContent;
+            const btnRemove = element.querySelector('.main__wrapper-box-detail-btn-remove');
+            const nameProduct = element.querySelector('.main__wrapper-box-detail-title-text');
+            const data = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
+            const modal = $('.modal');
+            const btnAgree = $('.modal__actions-agree');
+            const btnCancel = $('.modal__actions-cancel');
+            const textModal = $('.modal__content-text');
+
+            function handleShowModal() {
+                textModal.innerText = `Bạn có muốn xoá ${nameProduct.textContent} này không?`;
+                modal.classList.add('active');
+            }
+    
+            function handleHideModal() {
+                modal.classList.remove('active');
+            }
+
+            btnRemove.onclick = function (e) {
+                e.preventDefault();
+                handleShowModal();
+
+
+                btnAgree.onclick = function (e) {
+                    e.preventDefault();
+                    const data = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
+    
+                    if (data.length > 0) {
+                        console.log(idProduct);
+                        let flagIndex;
+                        const response = data.find((element, index) => {
+                            flagIndex = index;
+                            return element.idProduct === idProduct;
+                        })
+                        console.log(flagIndex);
+                        if (response) {
+                            data.forEach((element) => {
+                                if (element.idProduct === idProduct) {
+                                    data.splice(flagIndex, 1);
+                                    localStorage.setItem('dataFromCart', JSON.stringify(data));
+                                    handleHideModal();
+                                    window.location.reload()
+                                }
+                                ;
+                            })
+                        }
+                    }
+                    else {
+                        throw new Error('is not data dataFormCart');
+                    }
+                }
+            }
+
+            btnCancel.onclick = function (e) {
+                e.preventDefault();
+                handleHideModal();
+            }
+
+
+
+        })
     }
 }
 
 checkout.handleRenderProduct();
 checkout.sumTotal();
 checkout.handleChangeAmount();
+checkout.removeAllProducts();
+checkout.removeEachProduct();
