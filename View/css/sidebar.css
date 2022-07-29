@@ -136,4 +136,16 @@
   
   .sidebar__wrapper-footer {
     margin-top: 100%;
-  }/*# sourceMappingURL=profile.css.map */
+  }
+
+  .sidebar__wrapper-item.search {
+    display: none;
+  }
+
+
+  @media (max-width: 739px){
+    .sidebar__wrapper-item.search {
+      display: block;
+    }
+  
+  }

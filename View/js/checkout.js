@@ -3,7 +3,6 @@ const $$ = document.querySelectorAll.bind(document);
 
 const checkout = {
     
-    // format money VND
     // format money
     formatMoneyVND(str) {
         const toStringStr = str.toString();
@@ -41,21 +40,23 @@ const checkout = {
 
                 return `
                 <li class="main__wrapper-item">
+                    <input value="${data.idProduct}" name="idProduct" hidden />
                     <span class="main__id-product-from-cart" hidden name="id-product">${data.idProduct}</span>
                     <div class="main__wrapper-box-item">
                         <div class="main__wrapper-box-avatar">
                             <div class="main__wrapper-box-img" name="img-product" style="background-image: url(${data.imgProduct})"></div>
                         </div>
                         <div class="main__wrapper-box-detail">
-                            <h3 class="main__wrapper-box-detail-title" name="name-product">
-                                <span class="main__wrapper-box-detail-title-text">${data.nameProduct}</span>
+                            <h3 class="main__wrapper-box-detail-title">
+                                <span name="name-product" class="main__wrapper-box-detail-title-text">${data.nameProduct}</span>
                                 <button class="main__wrapper-box-detail-btn-remove">
                                     <i class="fa-regular fa-trash-can btn-remove-icon"></i>
                                 </button>
                             </h3>
+                            <input value="${sizeId}" name="sizeId" hidden />
                             <p class="main__wrapper-box-detail-desc" name="size-product" value="${sizeId}">Size: ${data.sizeProduct}</p>
                             <div class="main__wrapper-box-detail-footer">
-                                <div class="main__wrapper-box-detail-price" name="price-product" default="${data.priceDefault}" value="${data.priceProduct}">${_this.formatMoneyVND(data.priceProduct) + 'đ'}</div>
+                                <div class="main__wrapper-box-detail-price" name="price-product" default="${Number.parseInt(data.priceDefault)}" value="${Number.parseInt(data.priceProduct)}">${_this.formatMoneyVND(data.priceProduct) + 'đ'}</div>
                                 <div class="main__wrapper-box-control-quantity">
                                     <button class="main__wrapper-box-quantity-discount">
                                         <i class="fa-solid fa-minus"></i>
@@ -147,13 +148,14 @@ const checkout = {
         const parent = $$('.main__wrapper-item');
         const total = $('.main__order-total-price');
         const numberTotal = Number.parseInt(total.attributes.value.nodeValue);
-        Array.from(parent).forEach((item, index) => {
+        Array.from(parent).forEach((item) => {
             const btnIncrease = item.querySelector('.main__wrapper-box-quantity-inscrease');
             const btnDecrease = item.querySelector('.main__wrapper-box-quantity-discount');
             const input = item.querySelector('.main__wrapper-box-quantity-input');
             const idProduct = item.querySelector('.main__id-product-from-cart');
             const priceProduct = item.querySelector('.main__wrapper-box-detail-price');
-            btnIncrease.onclick = function() {
+            btnIncrease.onclick = function(e) {
+                e.preventDefault();
                 const numberInputValue = Number.parseInt(input.attributes.value.nodeValue);
                 if (numberInputValue >= 100) {
                     input.setAttribute('value', 100);
@@ -179,7 +181,8 @@ const checkout = {
                 }
             }
 
-            btnDecrease.onclick = function() {
+            btnDecrease.onclick = function(e) {
+                e.preventDefault();
                 const numberInputValue = Number.parseInt(input.attributes.value.nodeValue);
                 if (numberInputValue > 1) {
                     const minus = numberInputValue - 1;
@@ -241,6 +244,8 @@ const checkout = {
         }
 
         btnRemoveAll.onclick = function (e) {
+            const textModal = $('.modal__content-text');
+            textModal.innerText = `Bạn có muốn xoá hết tất cả sản phẩm không?`;
             e.preventDefault();
             handleShowModal();
 
@@ -266,7 +271,7 @@ const checkout = {
             const idProduct = element.querySelector('.main__id-product-from-cart').textContent;
             const btnRemove = element.querySelector('.main__wrapper-box-detail-btn-remove');
             const nameProduct = element.querySelector('.main__wrapper-box-detail-title-text');
-            const data = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
+ 
             const modal = $('.modal');
             const btnAgree = $('.modal__actions-agree');
             const btnCancel = $('.modal__actions-cancel');
@@ -324,6 +329,92 @@ const checkout = {
 
 
         })
+    },
+
+
+    // handleSubmit
+    handleSubmit() {
+        const btnSubmit =  $('.main__order-btn-total-price');
+        
+        btnSubmit.onclick = function (e) {
+            const dataStorage = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
+            if (dataStorage.length > 0) {
+                if (sessionUserID) {
+                    e.submit;
+                }
+                else {
+                    e.preventDefault();
+                    const modal = $('.main__checkout-modal');
+                    const btnAgree = $('.main__checkout-message-agree');
+                    const btnCancel = $('.main__checkout-message-cancel');
+                    const authModal = $('.main__checkout-message');
+                    handleShowModal();
+    
+                    function handleShowModal() {
+                        modal.classList.add('active');
+                    }
+                    
+                    function handleHideModal() {
+                        modal.classList.remove('active');
+                    }
+    
+                    btnAgree.onclick = function () {
+                        handleHideModal();
+                        window.location.href = 'http://localhost/G5-Shoes/view/login_regin.php';
+                    }
+    
+                    btnCancel.onclick = function () {
+                        handleHideModal();
+                    }
+    
+                    modal.onclick = function () {
+                        handleHideModal();
+                    }
+    
+                    authModal.onclick = function (e) {
+                        e.stopPropagation();
+                    }
+                    
+                }
+            }
+            else {
+                e.preventDefault();
+                const modalNoActive = $('.main__checkout-note');
+                modalNoActive.classList.add('active');
+                setTimeout(() => {
+                    modalNoActive.classList.remove('active');
+                }, 1800)
+            }
+        }
+    },
+
+    dataSubmit() {
+        const inputListProductID = $('.data');
+        const dataStorage = JSON.parse(localStorage.getItem('dataFromCart')) ?? [];
+        const listProductID = Array.from(dataStorage).map((data, index) => {
+            switch (data.sizeProduct) {
+                case '38':
+                    data.sizeProduct = '1';
+                    break;
+                case '39':
+                    data.sizeProduct = '2';
+                    break;
+                case '40':
+                    data.sizeProduct = '3';
+                    break;
+                case '41':
+                    data.sizeProduct = '4';
+                    break;
+            
+                default:
+                    break;
+            }
+
+
+            return [Number.parseInt(data.idProduct), Number.parseInt(data.priceProduct), Number.parseInt(data.sizeProduct)];
+        });
+        console.log(listProductID);
+        inputListProductID.setAttribute('value', JSON.stringify(listProductID));
     }
 }
 
@@ -332,3 +423,5 @@ checkout.sumTotal();
 checkout.handleChangeAmount();
 checkout.removeAllProducts();
 checkout.removeEachProduct();
+checkout.dataSubmit();
+checkout.handleSubmit();

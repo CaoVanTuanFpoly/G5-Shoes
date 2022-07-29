@@ -15,7 +15,7 @@ $sizeDAO = new SizeDAO();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Chủ</title>
+    <title>G5-Shoes</title>
     <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
@@ -43,9 +43,20 @@ $sizeDAO = new SizeDAO();
                         </div>
                         <div class="header__actions-search">
                             <button class="header__actions-btn-search">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
                             </button>
                             <input type="text" class="header__actions-search-input" placeholder="Search">
+                            <div class="header__list-search">
+                                <h3 class="header__list-search-title">Kết quả tìm kiếm</h3>
+                                <div class="header__no-result">
+                                    <div class="header__no-result-avatar">
+                                        <img src="https://thumbs.dreamstime.com/z/no-found-symbol-unsuccessful-search-vecotr-upset-magnifying-glass-cute-not-zoom-icon-suitable-results-oops-page-failure-122786031.jpg" alt="" class="header__no-result-img">
+                                    </div>
+                                    <h3 class="header__list-search-no-result">Không thấy kết quả tìm kiếm của bạn</h3>
+                                </div>
+                                <ul class="header__list-search-ul"></ul>
+                                
+                            </div>
                         </div>
                     </div>
                     <!-- header logo -->
@@ -56,7 +67,7 @@ $sizeDAO = new SizeDAO();
                     <div class="header__information">
                         <ul class="header__information-list">
                             <li class="header__information-item">
-                                <a href="#" class="header__information-link">
+                                <a href="./login_regin.php" class="header__information-link">
                                     <i class="fa-regular fa-user"></i>
                                 </a>
                             </li>
@@ -132,5 +143,18 @@ $sizeDAO = new SizeDAO();
                     </div>
                 </div>
             </div>
+
+            <?php 
+                $listData = $productDAO->getAllProduct();
+                foreach($listData as $data) {
+            ?>
+                <div class="data-parent" hidden>
+                    <div class="data-id"><?php echo $data->getID(); ?></div>
+                    <div class="data-name"><?php echo $data->getName(); ?></div>
+                    <div class="data-size"><?php echo $data->getSizeID(); ?></div>
+                    <div class="data-price"><?php echo $data->getOldPrice(); ?></div>
+                    <div class="data-img"><?php echo $data->getAvatar1(); ?></div>
+                </div>
+            <?php } ?>
         </header>
         <!-- end Header -->

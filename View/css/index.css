@@ -106,16 +106,21 @@
     font-size: 1.8rem;
     color: #181821;
     margin-top: 6px;
+    max-height: 6rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
-.main__product-box-title.news {
+/* .main__product-box-title.news {
     font-size: 1.4rem;
     height: 6rem;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
-}
+} */
 
 .main__product-box-price {
     display: flex;
@@ -183,3 +188,7 @@
 .main__product-box-color-component.yellow {
     background-color: yellow;
 } 
+
+.mt-30 {
+    margin-top: 30px;
+}

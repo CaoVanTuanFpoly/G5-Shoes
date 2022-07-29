@@ -10,7 +10,7 @@
     <div class="login_regin">
         <div class="login">
             <h2>ĐĂNG NHẬP</h2>
-            <form action="../Controller/LoginController.php" method="post">
+            <form action="../Controller/UserController.php" method="post">
                 <label for="">User name:</label><br />
                 <input type="text" name="email" id="" /><br />
                 <label for="">Password:</label><br />

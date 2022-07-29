@@ -519,7 +519,6 @@ const cart = {
     handleSubmit() {
         const btnSubmit = $('.main__checkout-right-link-checkout');
         btnSubmit.onclick = function (e) {
-            const _this = this;
             const listProducts = $$('.main__wrapper-product');
             const listProductHasActive = Array.from(listProducts).filter((product, index) => {
                 const hasActive = product.querySelector('.main__wrapper-product-label.active');
@@ -556,7 +555,7 @@ const cart = {
                                 nameProduct,
                                 sizeProduct,
                                 amountProduct,
-                                priceProduct,
+                                priceProduct: Number.parseInt(priceProduct),
                                 imgProduct,
                                 priceDefault,
                             });
@@ -577,7 +576,7 @@ const cart = {
                                 nameProduct,
                                 sizeProduct,
                                 amountProduct,
-                                priceProduct,
+                                priceProduct: Number.parseInt(priceProduct),
                                 imgProduct,
                                 priceDefault
                             });
@@ -600,7 +599,7 @@ const cart = {
                             nameProduct,
                             sizeProduct,
                             amountProduct,
-                            priceProduct,
+                            priceProduct: Number.parseInt(priceProduct),
                             imgProduct,
                             priceDefault
                         });

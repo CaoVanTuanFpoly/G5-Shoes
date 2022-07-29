@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="./css/footer.css"/>
             <div class="grid wide">
                 <div class="row">
-                    <div class="col l-3">
+                    <div class="col l-3 m-4 c-6">
                         <div class="footer__wrapper">
                             <div class="footer__wrapper-logo">
                                 <div class="footer__wrapper-logo-avatar">
@@ -81,7 +81,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col l-3">
+                    <div class="col l-3 m-4 c-6">
                         <div class="footer__wrapper">
                             <h2 class="footer__wrapper-title">Vê chúng tôi</h2>
                             <ul class="footer__wrapper-list">
@@ -94,7 +94,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col l-3">
+                    <div class="col l-3 m-4 c-6">
                         <div class="footer__wrapper">
                             <h2 class="footer__wrapper-title">Thanh toán</h2>
                             <ul class="footer__wrapper-list">
@@ -110,7 +110,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col l-3">
+                    <div class="col l-3 m-4 c-6">
                         <div class="footer__wrapper">
                             <h2 class="footer__wrapper-title">Hệ thống G5 Shoes</h2>
                             <ul class="footer__wrapper-list">
@@ -185,6 +185,12 @@
                         <span class="sidebar__wrapper-link-title">Cài đặt</span>
                     </a>
                 </li>
+                <li class="sidebar__wrapper-item search">
+                        <a href="#" class="sidebar__wrapper-link">
+                            <i class="fa-solid fa-arrow-right-from-bracket sidebar__wrapper-link-icon"></i>
+                            <span class="sidebar__wrapper-link-title">Search</span>
+                        </a>
+                    </li>
                 <!-- sidebar footer -->
                 <div class="sidebar__wrapper-footer">
                     <li class="sidebar__wrapper-item">

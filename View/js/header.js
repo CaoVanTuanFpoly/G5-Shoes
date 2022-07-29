@@ -111,8 +111,120 @@ const header = {
         headerCart.onclick = e => {
             e.stopPropagation();
         }
-    } 
+    },
+
+    handleSearch() {
+        const _this = this;
+        const parents = queries('.data-parent');
+        let arrayData = [];
+        parents.forEach((parent) => {
+            const idProduct = parent.querySelector('.data-id').textContent;
+            const nameProductNode = parent.querySelector('.data-name').textContent;
+            const sizeProduct = parent.querySelector('.data-size').textContent;
+            const priceProduct = parent.querySelector('.data-price').textContent;
+            const imgProduct = parent.querySelector('.data-img').textContent;
+            const objectData = {
+                idProduct,
+                nameProductNode,
+                sizeProduct,
+                priceProduct,
+                imgProduct,
+            }
+            arrayData.push(objectData);
+        });
+
+        const inputNode = query('.header__actions-search-input');
+        const listSearch = query('.header__list-search');
+        function handleShowResultsSearch() {
+            listSearch.classList.add('active');
+        }
+
+        function handleHideResultsSearch() {
+            listSearch.classList.remove('active');
+        }
+        inputNode.onfocus = function() {
+            handleShowResultsSearch();
+        }
+
+        document.addEventListener('click', e => {
+            if (e.target.className !== 'header__actions-search' && e.target.className !== 'header__list-search active' && e.target.className !=='header__actions-search-input' && e.target.className !== 'fa-solid fa-magnifying-glass search-icon') {
+                handleHideResultsSearch();
+            }
+        });
+
+        listSearch.addEventListener('click', e => {
+            e.stopPropagation();
+        })
+
+        inputNode.oninput = function (e) {
+            if ((e.target.value).startsWith(' ') || !(e.target.value).trim()) {
+                const noResult = query('.header__no-result');
+                noResult.style.display = 'flex';
+                const listRenderProduct = query('.header__list-search-ul');
+                listRenderProduct.style.display = 'none';
+            }
+            else {
+                const searchResults = arrayData.filter((data) => {
+                    const dataNameProduct = data.nameProductNode.toLowerCase();
+                    return dataNameProduct.includes(e.target.value.toLowerCase());
+                })
+                
+                if (searchResults.length > 0) {
+                    const listRenderProduct = query('.header__list-search-ul');
+                    const htmlSearchResult = searchResults.map((result) => {
+                        switch (result.sizeProduct) {
+                            case '1':
+                                result.sizeProduct = '38';
+                                break;
+                            case '2':
+                                result.sizeProduct = '39';
+                                break;
+                            case '3':
+                                result.sizeProduct = '40';
+                                break;
+                            case '4':
+                                result.sizeProduct = '40';
+                                break;
+                            default:
+                                break;
+                        }
+                        return `
+                            <li class="header__list-search-item">
+                                <a href="http://localhost/G5-Shoes/view/detail.php?id=${result.idProduct}" class="header__result-search-link">
+                                    <div class="header__result-search-box-left">
+                                        <div class="header__result-search-avatar">
+                                            <img src="${result.imgProduct}" alt="" class="header__result-search-img">
+                                        </div>
+                                        <div class="header__result-search-text">
+                                            <h4 class="header__result-search-name">${result.nameProductNode}</h4>
+                                            <p class="header__result-search-size">Size: ${result.sizeProduct}</p>
+                                        </div>
+                                    </div>
+                                    <div class="header__result-search-box-right">
+                                        <span class="header__result-search-price">${_this.formatMoneyVND(result.priceProduct) + 'đ'}</span>
+                                    </div>
+                                </a>
+                            </li>
+                        `;
+                    });
+                    const noResult = query('.header__no-result');
+                    noResult.style.display = 'none';
+                    listRenderProduct.innerHTML = htmlSearchResult.join('');
+                    listRenderProduct.style.display = 'block';
+
+                }
+                else {
+                    const noResult = query('.header__no-result');
+                    noResult.style.display = 'flex';
+                    const listRenderProduct = query('.header__list-search-ul');
+                    listRenderProduct.style.display = 'none';
+                }
+            }
+        }
+        
+    }
 }
 
 header.handleShowNotification()
 header.handleShowCart();
+header.handleSearch();

@@ -34,7 +34,7 @@
                                     foreach ($productNews as $productNew) {
                                         
                                 ?>
-                                    <div class="col l-3">
+                                    <div class="col l-3 m-4 c-6">
                                         <a href="<?php echo './detail.php?id='.$productNew->getId() ?>" class="main__product-box">
                                             <div class="main__product-box-picture">
                                                 <div class="main__product-box-img" style="background-image: url(<?php echo $productNew->getAvatar1(); ?>)"></div>
@@ -214,7 +214,7 @@
                         <div class="main__product-content">
                             <div class="row">
                                 <!-- product 1 -->
-                                <div class="col l-3">
+                                <div class="col l-3 m-4 c-6">
                                     <a href="#" class="main__product-box">
                                         <div class="main__product-box-picture news">
                                             <div class="main__product-box-img news" style="background-image: url(https://file.hstatic.net/1000282067/file/new-balance-550-release-date_8142186bc207493da37ac410f95bbb11_1024x1024.jpg)"></div>
@@ -226,7 +226,7 @@
                                     </a>
                                 </div>
                                 <!-- news 2 -->
-                                <div class="col l-3">
+                                <div class="col l-3 m-4 c-6">
                                     <a href="#" class="main__product-box">
                                         <div class="main__product-box-picture news">
                                             <div class="main__product-box-img news" style="background-image: url(http://file.hstatic.net/1000282067/file/_off-white-nike-dunk-low-the-50-black-silver-dm1602-001-release-info-2_d2452dc3498c4b7f8f7b134700d8c976_2048x2048.jpg)"></div>
@@ -238,7 +238,7 @@
                                     </a>
                                 </div>
                                 <!-- news 3 -->
-                                <div class="col l-3">
+                                <div class="col l-3 m-4 c-6">
                                     <a href="#" class="main__product-box">
                                         <div class="main__product-box-picture news">
                                             <div class="main__product-box-img news" style="background-image: url(https://file.hstatic.net/1000282067/article/www.highsnobiety__42__26b858ec8fae436aa8031e79948bf05b_large.png)"></div>
@@ -250,7 +250,7 @@
                                     </a>
                                 </div>
                                 <!-- news 4 -->
-                                <div class="col l-3">
+                                <div class="col l-3 m-4 c-6">
                                     <a href="#" class="main__product-box">
                                         <div class="main__product-box-picture news">
                                             <div class="main__product-box-img news" style="background-image: url(https://file.hstatic.net/1000282067/article/www.highsnobiety__38__c6388e678d784f40ac3cd421e97ce6a2_large.png)"></div>
