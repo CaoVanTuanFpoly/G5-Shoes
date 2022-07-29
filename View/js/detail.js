@@ -2,6 +2,14 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 const detail = {
+
+    // format money
+    formatMoneyVND(str) {
+        const toStringStr = str.toString();
+        return toStringStr.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + '.')) + prev
+        })
+    },
     
     handleChangeImg() {
         const imagesBox = $$('.main__show-control-box');
@@ -38,6 +46,7 @@ const detail = {
     },
 
     handleChangeCount() {
+        const _this = this;
         const btnIncrease = $('.main__information-amount-quantity-increase');
         const btnDecrease = $('.main__information-amount-quantity-decrease');
         const inputAmount = $('.main__information-amount-quantity-input');
@@ -46,6 +55,7 @@ const detail = {
 
         function defaultAttributeValuePrice () {
             priceProduct.setAttribute('value', Number(defaultPrice.textContent));
+            priceProduct.textContent = _this.formatMoneyVND(priceProduct.textContent) + 'đ';
         }
         defaultAttributeValuePrice();
 
@@ -59,16 +69,16 @@ const detail = {
                 inputAmount.attributes.value.nodeValue = inputAmount.value;
                 const total = Number(defaultPrice.textContent) * (inputAmount.attributes.value.nodeValue);
                 priceProduct.setAttribute('value', total)
-                priceProduct.textContent = total;
+                priceProduct.textContent = this.formatMoneyVND(total) + 'đ';
             }
         }
 
         btnDecrease.onclick = () => {
             if (inputAmount.value > 1) {
                 inputAmount.attributes.value.nodeValue = inputAmount.value;
-                const total = Number(priceProduct.textContent) - Number(defaultPrice.textContent);
+                const total = Number(priceProduct.attributes.value.nodeValue) - Number(defaultPrice.textContent);
                 priceProduct.setAttribute('value', total)
-                priceProduct.textContent = total;
+                priceProduct.textContent = this.formatMoneyVND(total) + 'đ';
                 inputAmount.value = Number(inputAmount.value) - 1;
             }
             else {
